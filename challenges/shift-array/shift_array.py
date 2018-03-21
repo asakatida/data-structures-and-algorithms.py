@@ -1,8 +1,3 @@
-__all__ = ['getLength', 'getMiddleOfLength', 'insertShiftArray']
-
-POISON_OBJECT = object()
-
-
 def getLength(array):
     count = 0
     for _ in array:
@@ -14,18 +9,39 @@ def getMiddleOfLength(length):
     return (length + 1) // 2
 
 
+def yieldItemsWithItem(array, item, count, pos):
+    insertCheck = False
+    for i in range(count):
+        if insertCheck:
+            yield array[i - 1]
+        elif i == pos:
+            yield item
+            insertCheck = True
+        else:
+            yield array[i]
+
+
+def yieldItemsWithoutPos(array, count, pos):
+    removeCheck = False
+    for i in range(count):
+        if removeCheck:
+            yield array[i]
+        elif i == pos:
+            removeCheck = True
+        else:
+            yield array[i]
+
+
 def insertShiftArray(array, item):
     count = getLength(array)
     pos = getMiddleOfLength(count)
     count += 1
-    output = [POISON_OBJECT for _ in range(count)]
-    insertCheck = False
-    for i in range(count):
-        if insertCheck:
-            output[i] = array[i - 1]
-        elif i == pos:
-            output[i] = item
-            insertCheck = True
-        else:
-            output[i] = array[i]
+    output = list(yieldItemsWithItem(array, item, count, pos))
+    return output
+
+
+def removeShiftArray(array):
+    count = getLength(array)
+    pos = count // 2
+    output = list(yieldItemsWithoutPos(array, count, pos))
     return output

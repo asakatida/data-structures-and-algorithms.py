@@ -25,6 +25,30 @@ def test_getMiddleOfLength_odd():
     assert shift_array.getMiddleOfLength(3) == 2
 
 
+def test_yieldItemsWithItem_empty_array():
+    assert list(shift_array.yieldItemsWithItem([], list, 1, 0)) == [list]
+
+
+def test_yieldItemsWithItem_position_at_end():
+    assert list(shift_array.yieldItemsWithItem([''], list, 2, 1)) == ['', list]
+
+
+def test_yieldItemsWithItem_odd_length():
+    assert list(shift_array.yieldItemsWithItem(['', ''], list, 3, 1)) == ['', list, '']
+
+
+def test_yieldItemsWithoutPos_empty_array():
+    assert list(shift_array.yieldItemsWithoutPos([], 0, 0)) == []
+
+
+def test_yieldItemsWithoutPos_position_at_end():
+    assert list(shift_array.yieldItemsWithoutPos([''], 1, 0)) == []
+
+
+def test_yieldItemsWithoutPos_odd_length():
+    assert list(shift_array.yieldItemsWithoutPos(['', ''], 2, 1)) == ['']
+
+
 def test_insertShiftArray_inserts_in_empty_array():
     assert shift_array.insertShiftArray([], None) == [None]
 
