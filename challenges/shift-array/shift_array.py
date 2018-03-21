@@ -11,6 +11,7 @@ def insertShiftArray(array, item):
             output[i] = array[i - 1]
         elif i == pos:
             output[i] = item
+            insertCheck = True
         else:
             output[i] = array[i]
     return output
