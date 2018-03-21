@@ -1,10 +1,15 @@
+__all__ = ['insertShiftArray']
+
+POISON_OBJECT = object()
+
+
 def insertShiftArray(array, item):
     count = 0
     for _ in array:
         count += 1
     count += 1
     pos = count // 2
-    output = [None for _ in range(count)]
+    output = [POISON_OBJECT for _ in range(count)]
     insertCheck = False
     for i in range(count):
         if insertCheck:
