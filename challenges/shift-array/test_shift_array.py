@@ -67,3 +67,23 @@ def test_insertShiftArray_inserts_in_array_length_one():
 
 def test_insertShiftArray_inserts_in_mixed_type_array():
     assert shift_array.insertShiftArray([1, 2, '3', 'FOUR'], 7.5) == [1, 2, 7.5, '3', 'FOUR']
+
+
+def test_removeShiftArray_empty_array():
+    assert shift_array.removeShiftArray([]) == []
+
+
+def test_removeShiftArray_odd_array_length():
+    assert shift_array.removeShiftArray([None] * 3) == [None, None]
+
+
+def test_removeShiftArray_even_array_length():
+    assert shift_array.removeShiftArray([None] * 4) == [None, None, None]
+
+
+def test_removeShiftArray_array_length_one():
+    assert shift_array.removeShiftArray([None]) == []
+
+
+def test_removeShiftArray_mixed_type_array():
+    assert shift_array.removeShiftArray([1, 2, '3', 'FOUR']) == [1, 2, 'FOUR']
