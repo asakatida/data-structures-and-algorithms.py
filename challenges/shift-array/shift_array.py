@@ -5,7 +5,7 @@ def getLength(array):
     return count
 
 
-def getMiddleOfLength(length):
+def getMiddleOfLengthInsert(length):
     return (length + 1) // 2
 
 
@@ -34,7 +34,7 @@ def yieldItemsWithoutPos(array, count, pos):
 
 def insertShiftArray(array, item):
     count = getLength(array)
-    pos = getMiddleOfLength(count)
+    pos = getMiddleOfLengthInsert(count)
     count += 1
     output = list(yieldItemsWithItem(array, item, count, pos))
     return output
