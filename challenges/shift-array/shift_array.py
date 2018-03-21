@@ -1,12 +1,17 @@
-__all__ = ['insertShiftArray']
+__all__ = ['getLength', 'insertShiftArray']
 
 POISON_OBJECT = object()
 
 
-def insertShiftArray(array, item):
+def getLength(array):
     count = 0
     for _ in array:
         count += 1
+    return count
+
+
+def insertShiftArray(array, item):
+    count = getLength(array)
     count += 1
     pos = count // 2
     output = [POISON_OBJECT for _ in range(count)]
