@@ -13,16 +13,16 @@ def test_getLength_of_empty_array_length_odd():
     assert shift_array.getLength([None] * 3) == 3
 
 
-def test_getMiddleOfLength_zero():
-    assert shift_array.getMiddleOfLength(0) == 0
+def test_getMiddleOfLengthInsert_zero():
+    assert shift_array.getMiddleOfLengthInsert(0) == 0
 
 
-def test_getMiddleOfLength_one():
-    assert shift_array.getMiddleOfLength(1) == 1
+def test_getMiddleOfLengthInsert_one():
+    assert shift_array.getMiddleOfLengthInsert(1) == 1
 
 
-def test_getMiddleOfLength_odd():
-    assert shift_array.getMiddleOfLength(3) == 2
+def test_getMiddleOfLengthInsert_odd():
+    assert shift_array.getMiddleOfLengthInsert(3) == 2
 
 
 def test_yieldItemsWithItem_empty_array():
