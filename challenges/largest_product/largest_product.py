@@ -15,7 +15,6 @@ def largest_adjacent_product(array, i, j):
     largest = 0
     for adjacent in adjacent_positions(array, i, j):
         prod = target * adjacent
-        print('largest_adjacent_product', i, j, prod)
         if prod > largest:
             largest = prod
     return largest
@@ -28,8 +27,6 @@ def largest_product(array):
     for i in range(len(array)):
         for j in range(i % 2, len(array[i]), 2):
             prod = largest_adjacent_product(array, i, j)
-            print('largest_product', i, j, prod)
             if prod > largest:
                 largest = prod
-    print('largest_product', largest)
     return largest
