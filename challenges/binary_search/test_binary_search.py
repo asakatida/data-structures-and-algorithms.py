@@ -35,3 +35,7 @@ def test_binary_search_large_array_low():
 
 def test_binary_search_large_array_high():
     assert binary_search(list(range(0xFFFFFF)), 0xFFFFF) == 0xFFFFF
+
+
+def test_binary_search_large_array_not_found():
+    assert binary_search(list(range(0xFFFFFF)), -4) == -1
