@@ -23,3 +23,15 @@ def test_binary_search_found_at_middle_even():
 
 def test_binary_search_found_at_middle_odd():
     assert binary_search([1, 3, 5], 3) == 1
+
+
+def test_binary_search_high_value():
+    assert binary_search([1, 3, 5], 3) == 1
+
+
+def test_binary_search_large_array_low():
+    assert binary_search(list(range(0xFFFFFF)), 0xFF) == 0xFF
+
+
+def test_binary_search_large_array_high():
+    assert binary_search(list(range(0xFFFFFF)), 0xFFFFF) == 0xFFFFF
