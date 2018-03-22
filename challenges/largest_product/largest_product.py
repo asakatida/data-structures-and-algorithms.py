@@ -1,2 +1,3 @@
 def largest_product(array):
-    pass
+    largest = 0
+    return largest
