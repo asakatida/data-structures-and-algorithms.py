@@ -4,6 +4,7 @@ from .node import Node
 class LinkedList:
     def __init__(self, it=()):
         """
+        Initialize new list with optional iterable.
         """
         self.head = None
         self._size = 0
@@ -12,37 +13,40 @@ class LinkedList:
             self.insert(value)
 
     def __add__(self, value):
-        pass
+        return NotImplemented
 
     def __contains__(self, value):
-        pass
+        return self.find(value)
 
     def __delitem__(self, value):
-        pass
+        raise NotImplementedError
 
     def __eq__(self, value):
-        pass
+        return NotImplemented
 
     def __ge__(self, value):
-        pass
+        return NotImplemented
 
     def __getitem__(self):
-        pass
+        raise NotImplementedError
 
     def __gt__(self, value):
-        pass
+        return NotImplemented
 
     def __iadd__(self, value):
-        pass
+        return NotImplemented
 
     def __imul__(self, value):
-        pass
+        return NotImplemented
 
     def __iter__(self):
-        pass
+        node = self.head
+        while node is not None:
+            yield node.value
+            node = node._next
 
     def __le__(self, value):
-        pass
+        return NotImplemented
 
     def __len__(self):
         """
@@ -50,13 +54,13 @@ class LinkedList:
         return self._size
 
     def __lt__(self, value):
-        pass
+        return NotImplemented
 
     def __mul__(self, value):
-        pass
+        return NotImplemented
 
     def __ne__(self, value):
-        pass
+        return NotImplemented
 
     def __repr__(self):
         """
@@ -64,13 +68,13 @@ class LinkedList:
         return ''
 
     def __reversed__(self):
-        pass
+        raise NotImplementedError
 
     def __rmul__(self, value):
-        pass
+        return NotImplemented
 
     def __setitem__(self, key, value):
-        pass
+        raise NotImplementedError
 
     def __str__(self):
         """
@@ -78,22 +82,23 @@ class LinkedList:
         return ''
 
     def append(self, value):
-        pass
+        raise NotImplementedError
 
     def clear(self):
-        pass
+        raise NotImplementedError
 
     def copy(self):
-        pass
+        raise NotImplementedError
 
     def count(self, value):
-        pass
+        raise NotImplementedError
 
     def extend(self, it):
-        pass
+        raise NotImplementedError
 
     def find(self, value):
         """
+        Return a boolean indicating if the value is found in the list.
         """
         node = self.head
         while node is not None:
@@ -103,24 +108,25 @@ class LinkedList:
         return False
 
     def index(self, value, start=0, stop=-1):
-        pass
+        raise NotImplementedError
 
     def insert(self, value):
         """
+        Insert a value into the head of the list.
         """
         self.head = Node(value, self.head)
         self._size += 1
 
     def pop(self, index=0):
-        pass
+        raise NotImplementedError
 
     def remove(self, value):
-        pass
+        raise NotImplementedError
 
     def reverse(self):
-        pass
+        raise NotImplementedError
 
     def sort(self):
-        pass
+        raise NotImplementedError
 
     __hash__ = None
