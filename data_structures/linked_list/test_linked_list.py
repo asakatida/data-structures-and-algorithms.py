@@ -14,3 +14,18 @@ def test_data_list_insert(ordered_list):
     assert ordered_list.head.value == 7
     ordered_list.insert(10)
     assert ordered_list.head.value == 10
+
+
+def test_empty_list_find(new_list):
+    assert new_list.find(1) is False
+    assert new_list.find('a') is False
+    assert new_list.find({}) is False
+    assert new_list.find(None) is False
+
+
+def test_data_list_find(ordered_list):
+    assert ordered_list.find(6) is True
+
+
+def test_data_list_not_find(ordered_list):
+    assert ordered_list.find(8) is False

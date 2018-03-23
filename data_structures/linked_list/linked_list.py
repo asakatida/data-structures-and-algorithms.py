@@ -95,7 +95,12 @@ class LinkedList:
     def find(self, value):
         """
         """
-        pass
+        node = self.head
+        while node is not None:
+            if node.value == value:
+                return True
+            node = node._next
+        return False
 
     def index(self, value, start=0, stop=-1):
         pass
