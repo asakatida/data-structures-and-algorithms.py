@@ -1,3 +1,6 @@
+from .node import Node
+
+
 class LinkedList:
     def __init__(self, it=()):
         """
@@ -100,7 +103,7 @@ class LinkedList:
     def insert(self, value):
         """
         """
-        pass
+        self.head = Node(value, self.head)
 
     def pop(self, index=0):
         pass
