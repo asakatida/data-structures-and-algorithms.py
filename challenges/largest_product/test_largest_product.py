@@ -20,12 +20,3 @@ def test_largest_product_square_matrix():
             (2, 4, 1, 3),
             (3, 1, 4, 2),
             (4, 2, 1, 1)]) == 12
-
-
-def test_largest_product_three_adjacent():
-    assert largest_product(
-        [
-            (1, 3, 1, 4),
-            (2, 4, 1, 3),
-            (3, 1, 4, 2),
-            (4, 2, 1, 1)], 3) == 12
