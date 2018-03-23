@@ -23,4 +23,5 @@ Each project is also designed to support importing as a Python module.
     - [List](./data_structures/list)
 2. Algorithms
     - [binary-search](./challenges/binary_search)
+    - [largest-product](./challenges/largest_product)
     - [shift-array](./challenges/shift-array)
