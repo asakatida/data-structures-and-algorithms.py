@@ -8,7 +8,7 @@ class LinkedList:
         self.head = None
         self._size = 0
 
-        for value in it:
+        for value in reversed(it):
             self.insert(value)
 
     def __add__(self, value):
