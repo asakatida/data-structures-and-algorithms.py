@@ -1,5 +1,5 @@
 class LinkedList:
-    def __init__(iterable=()):
+    def __init__(self, iterable=()):
         pass
 
     def __add__(self, value):
