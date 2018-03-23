@@ -8,6 +8,17 @@ def test_empty_list_insert(new_list):
     assert new_list.head is not None
 
 
+def test_data_list_has_length(ordered_list):
+    assert len(ordered_list) > 0
+
+
+def test_data_list_insert_changes_length(unordered_list):
+    start_len = len(unordered_list)
+    unordered_list.insert([1, 2, 3])
+    unordered_list.insert('abc')
+    assert len(unordered_list) - start_len == 2
+
+
 def test_data_list_insert(ordered_list):
     assert ordered_list.head.value == 3
     ordered_list.insert(7)

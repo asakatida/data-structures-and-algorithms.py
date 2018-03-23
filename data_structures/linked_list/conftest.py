@@ -15,7 +15,7 @@ def ordered_list():
 
 @pytest.fixture
 def unordered_list():
-    return LinkedList(map(lambda i: i % 7, range(73, 40, -2)))
+    return LinkedList(tuple(map(lambda i: i % 7, range(73, 40, -2))))
 
 
 @pytest.fixture

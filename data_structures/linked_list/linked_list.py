@@ -109,6 +109,7 @@ class LinkedList:
         """
         """
         self.head = Node(value, self.head)
+        self._size += 1
 
     def pop(self, index=0):
         pass
