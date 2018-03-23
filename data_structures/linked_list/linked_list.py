@@ -16,6 +16,9 @@ class LinkedList:
         return NotImplemented
 
     def __contains__(self, value):
+        """
+        Return a boolean indicating if the value is found in the list.
+        """
         return self.find(value)
 
     def __delitem__(self, value):
@@ -40,6 +43,8 @@ class LinkedList:
         return NotImplemented
 
     def __iter__(self):
+        """
+        """
         node = self.head
         while node is not None:
             yield node.value
@@ -50,6 +55,7 @@ class LinkedList:
 
     def __len__(self):
         """
+        Return the number of values currently in the list.
         """
         return self._size
 
@@ -64,8 +70,9 @@ class LinkedList:
 
     def __repr__(self):
         """
+        Return a formatted string representing list.
         """
-        return ''
+        return f'LinkedList(({ ", ".join(map(repr, self)) }))'
 
     def __reversed__(self):
         raise NotImplementedError
@@ -78,8 +85,9 @@ class LinkedList:
 
     def __str__(self):
         """
+        Return a string representing list contents.
         """
-        return ''
+        return f'[{ ", ".join(map(str, self)) }]'
 
     def append(self, value):
         raise NotImplementedError

@@ -40,3 +40,31 @@ def test_data_list_find(ordered_list):
 
 def test_data_list_not_find(ordered_list):
     assert ordered_list.find(8) is False
+
+
+def test_data_list_repr(ordered_list):
+    assert repr(ordered_list) == \
+        'LinkedList((3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39))'
+
+
+def test_unorder_data_list_repr(unordered_list):
+    assert repr(unordered_list) == \
+        'LinkedList((3, 1, 6, 4, 2, 0, 5, 3, 1, 6, 4, 2, 0, 5, 3, 1, 6))'
+
+
+def test_empty_list_repr(new_list):
+    assert repr(new_list) == 'LinkedList(())'
+
+
+def test_data_list_str(ordered_list):
+    assert str(ordered_list) == \
+        '[3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39]'
+
+
+def test_unorder_data_list_str(unordered_list):
+    assert str(unordered_list) == \
+        '[3, 1, 6, 4, 2, 0, 5, 3, 1, 6, 4, 2, 0, 5, 3, 1, 6]'
+
+
+def test_empty_list_str(new_list):
+    assert str(new_list) == '[]'
