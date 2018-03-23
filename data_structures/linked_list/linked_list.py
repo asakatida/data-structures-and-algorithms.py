@@ -1,23 +1,26 @@
 class LinkedList:
-    def __init__(self, iterable=()):
-        pass
+    def __init__(self, it=()):
+        """
+        """
+        self.head = None
+        self._size = 0
+
+        for value in it:
+            self.insert(value)
 
     def __add__(self, value):
         pass
 
-    def __contains__(self, key):
+    def __contains__(self, value):
         pass
 
-    def __delitem__(self, key):
+    def __delitem__(self, value):
         pass
 
     def __eq__(self, value):
         pass
 
     def __ge__(self, value):
-        pass
-
-    def __getattribute__(self, name):
         pass
 
     def __getitem__(self):
@@ -39,7 +42,9 @@ class LinkedList:
         pass
 
     def __len__(self):
-        pass
+        """
+        """
+        return self._size
 
     def __lt__(self, value):
         pass
@@ -51,7 +56,9 @@ class LinkedList:
         pass
 
     def __repr__(self):
-        pass
+        """
+        """
+        return ''
 
     def __reversed__(self):
         pass
@@ -63,7 +70,9 @@ class LinkedList:
         pass
 
     def __str__(self):
-        pass
+        """
+        """
+        return ''
 
     def append(self, value):
         pass
@@ -81,12 +90,16 @@ class LinkedList:
         pass
 
     def find(self, value):
+        """
+        """
         pass
 
     def index(self, value, start=0, stop=-1):
         pass
 
-    def insert(self, index, value):
+    def insert(self, value):
+        """
+        """
         pass
 
     def pop(self, index=0):
