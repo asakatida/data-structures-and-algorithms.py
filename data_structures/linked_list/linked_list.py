@@ -90,7 +90,16 @@ class LinkedList:
         return f'[{ ", ".join(map(str, self)) }]'
 
     def append(self, value):
-        raise NotImplementedError
+        """
+        Insert a value at the end of the list.
+        """
+        if self.head is None:
+            self.head = Node(value)
+            return
+        node = self.head
+        while node._next is not None:
+            node = node._next
+        node._next = Node(value)
 
     def clear(self):
         raise NotImplementedError
