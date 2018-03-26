@@ -10,8 +10,7 @@ class LinkedList:
         """
         Initialize new list with optional iterable.
         """
-        self.head = None
-        self._size = 0
+        self.clear()
 
         for value in reversed(it):
             self.insert(value)
@@ -93,22 +92,36 @@ class LinkedList:
         """
         return f'[{ ", ".join(map(str, self)) }]'
 
+    def _insert_after(self, node, value):
+        node._next = Node(value, node._next)
+        self._size += 1
+
+    def _insert_head(self, value):
+        self.head = Node(value, self.head)
+        self._size += 1
+
+    def _remove_after(self, node):
+        node._next = node._next._next
+        self._size -= 1
+
+    def _remove_head(self):
+        self.head = self.head._next
+        self._size -= 1
+
     def append(self, value):
         """
         Insert a value at the end of the list.
         """
         if self.head is None:
-            self.head = Node(value)
-            self._size += 1
-            return
+            return self._insert_head(value)
         node = self.head
         while node._next is not None:
             node = node._next
-        node._next = Node(value)
-        self._size += 1
+        self._insert_after(node, value)
 
     def clear(self):
-        raise NotImplementedError
+        self.head = None
+        self._size = 0
 
     def copy(self):
         raise NotImplementedError
@@ -137,8 +150,7 @@ class LinkedList:
         """
         Insert a value into the head of the list.
         """
-        self.head = Node(value, self.head)
-        self._size += 1
+        self._insert_head(value)
 
     def insert_after(self, key, value):
         """
@@ -147,9 +159,7 @@ class LinkedList:
         node = self.head
         while node is not None:
             if node.value == key:
-                node._next = Node(value, node._next)
-                self._size += 1
-                return
+                return self._insert_after(node, value)
             node = node._next
         raise LLError('insert_after key not in LinkedList')
 
@@ -160,15 +170,11 @@ class LinkedList:
         if self.head is None:
             raise LLError('insert_before key not in LinkedList')
         if self.head.value == key:
-            self.head = Node(value, self.head)
-            self._size += 1
-            return
+            return self._insert_head(value)
         node = self.head
         while node._next is not None:
             if node._next.value == key:
-                node._next = Node(value, node._next)
-                self._size += 1
-                return
+                return self._insert_after(node, value)
             node = node._next
         raise LLError('insert_before key not in LinkedList')
 
@@ -182,15 +188,11 @@ class LinkedList:
         if self.head is None:
             raise LLError('remove value not in LinkedList')
         if self.head.value == value:
-            self.head = self.head._next
-            self._size -= 1
-            return
+            return self._remove_head()
         node = self.head
         while node._next is not None:
             if node._next.value == value:
-                node._next = node._next._next
-                self._size -= 1
-                return
+                return self._remove_after(node)
             node = node._next
         raise LLError('remove value not in LinkedList')
 
