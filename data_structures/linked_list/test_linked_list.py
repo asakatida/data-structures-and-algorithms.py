@@ -87,6 +87,41 @@ def test_unorder_list_insert_after(unordered_list):
         unordered_list.insert_after(49, 87)
 
 
+def test_empty_list_insert_before(new_list):
+    with pytest.raises(LLError):
+        new_list.insert_before(1, None)
+    with pytest.raises(LLError):
+        new_list.insert_before('a', None)
+    with pytest.raises(LLError):
+        new_list.insert_before({}, None)
+    with pytest.raises(LLError):
+        new_list.insert_before(None, None)
+
+
+def test_data_list_insert_before(ordered_list):
+    assert ordered_list.find(99) is False
+    ordered_list.insert_before(6, 99)
+    assert ordered_list.find(99) is True
+
+
+def test_unorder_list_insert_before(unordered_list):
+    assert unordered_list.find(87) is False
+    unordered_list.insert_before(0, 87)
+    assert unordered_list.find(87) is True
+    with pytest.raises(LLError):
+        unordered_list.insert_before(49, 87)
+
+
+def test_unorder_list_insert_before_large(unordered_list):
+    for i in range(0, 99, 3):
+        for j in range(99, 0, -2):
+            if unordered_list.find(i):
+                unordered_list.insert_before(i, j)
+            else:
+                with pytest.raises(LLError):
+                    unordered_list.insert_before(i, j)
+
+
 def test_data_list_repr(ordered_list):
     assert repr(ordered_list) == \
         'LinkedList((3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39))'

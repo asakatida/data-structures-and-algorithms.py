@@ -150,6 +150,23 @@ class LinkedList:
             node = node._next
         raise LLError('insert_after key not in LinkedList')
 
+    def insert_before(self, key, value):
+        """
+        Insert a value before the node containing key.
+        """
+        if self.head is None:
+            raise LLError('insert_before key not in LinkedList')
+        if self.head.value == key:
+            self.head = Node(value, self.head)
+            return
+        node = self.head
+        while node._next is not None:
+            if node._next.value == key:
+                node._next = Node(value, node._next)
+                return
+            node = node._next
+        raise LLError('insert_before key not in LinkedList')
+
     def pop(self, index=0):
         raise NotImplementedError
 
