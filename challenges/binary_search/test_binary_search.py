@@ -5,6 +5,14 @@ def test_binary_search_empty_array():
     assert binary_search([], 0) == -1
 
 
+def test_binary_search_find_single_array():
+    assert binary_search([3], 3) == 0
+
+
+def test_binary_search_not_found_single_array():
+    assert binary_search([1], 0) == -1
+
+
 def test_binary_search_not_found_in_short_array():
     assert binary_search([1, 2, 3], 0) == -1
 
