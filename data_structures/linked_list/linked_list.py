@@ -1,6 +1,10 @@
 from .node import Node
 
 
+class LLError(Exception):
+    """Exception detailing errors from LinkedList methods."""
+
+
 class LinkedList:
     def __init__(self, it=()):
         """
@@ -133,6 +137,18 @@ class LinkedList:
         """
         self.head = Node(value, self.head)
         self._size += 1
+
+    def insert_after(self, key, value):
+        """
+        Insert a value after the node containing key.
+        """
+        node = self.head
+        while node is not None:
+            if node.value == key:
+                node._next = Node(value, node._next)
+                return
+            node = node._next
+        raise LLError('insert_after key not in LinkedList')
 
     def pop(self, index=0):
         raise NotImplementedError
