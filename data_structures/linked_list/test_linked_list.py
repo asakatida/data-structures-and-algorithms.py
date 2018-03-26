@@ -50,16 +50,19 @@ def test_data_list_not_find(ordered_list):
 def test_empty_list_append(new_list):
     new_list.append(2)
     assert new_list.head.value == 2
+    assert len(new_list) == 1
 
 
 def test_data_list_append(ordered_list):
     ordered_list.append(2)
     assert tuple(ordered_list)[-1] == 2
+    assert len(ordered_list) == 14
 
 
 def test_unorder_list_append(unordered_list):
     unordered_list.append(2)
     assert tuple(unordered_list)[-1] == 2
+    assert len(unordered_list) == 18
 
 
 def test_empty_list_insert_after(new_list):
@@ -71,12 +74,14 @@ def test_empty_list_insert_after(new_list):
         new_list.insert_after({}, None)
     with pytest.raises(LLError):
         new_list.insert_after(None, None)
+    assert len(new_list) == 0
 
 
 def test_data_list_insert_after(ordered_list):
     assert ordered_list.find(99) is False
     ordered_list.insert_after(6, 99)
     assert ordered_list.find(99) is True
+    assert len(ordered_list) == 14
 
 
 def test_unorder_list_insert_after(unordered_list):
@@ -85,6 +90,7 @@ def test_unorder_list_insert_after(unordered_list):
     assert unordered_list.find(87) is True
     with pytest.raises(LLError):
         unordered_list.insert_after(49, 87)
+    assert len(unordered_list) == 18
 
 
 def test_empty_list_insert_before(new_list):
@@ -96,12 +102,14 @@ def test_empty_list_insert_before(new_list):
         new_list.insert_before({}, None)
     with pytest.raises(LLError):
         new_list.insert_before(None, None)
+    assert len(new_list) == 0
 
 
 def test_data_list_insert_before(ordered_list):
     assert ordered_list.find(99) is False
     ordered_list.insert_before(6, 99)
     assert ordered_list.find(99) is True
+    assert len(ordered_list) == 14
 
 
 def test_unorder_list_insert_before(unordered_list):
@@ -110,6 +118,7 @@ def test_unorder_list_insert_before(unordered_list):
     assert unordered_list.find(87) is True
     with pytest.raises(LLError):
         unordered_list.insert_before(49, 87)
+    assert len(unordered_list) == 18
 
 
 def test_unorder_list_insert_before_large(unordered_list):
@@ -120,6 +129,36 @@ def test_unorder_list_insert_before_large(unordered_list):
             else:
                 with pytest.raises(LLError):
                     unordered_list.insert_before(i, j)
+    assert len(unordered_list) == 917
+
+
+def test_empty_list_remove(new_list):
+    with pytest.raises(LLError):
+        new_list.remove(1)
+    with pytest.raises(LLError):
+        new_list.remove('a')
+    with pytest.raises(LLError):
+        new_list.remove({})
+    with pytest.raises(LLError):
+        new_list.remove(None)
+
+
+def test_data_list_remove(ordered_list):
+    assert ordered_list.find(6) is True
+    ordered_list.remove(6)
+    assert ordered_list.find(6) is False
+
+
+def test_ordered_list_clear(ordered_list):
+    while len(ordered_list):
+        ordered_list.remove(tuple(ordered_list)[-1])
+    assert ordered_list.head is None
+
+
+def test_unorder_list_clear(unordered_list):
+    while len(unordered_list):
+        unordered_list.remove(tuple(unordered_list)[-1])
+    assert unordered_list.head is None
 
 
 def test_data_list_repr(ordered_list):
