@@ -42,6 +42,21 @@ def test_data_list_not_find(ordered_list):
     assert ordered_list.find(8) is False
 
 
+def test_empty_list_append(new_list):
+    new_list.append(2)
+    assert new_list.head.value == 2
+
+
+def test_data_list_append(ordered_list):
+    ordered_list.append(2)
+    assert tuple(ordered_list)[-1] == 2
+
+
+def test_unorder_list_append(unordered_list):
+    unordered_list.append(2)
+    assert tuple(unordered_list)[-1] == 2
+
+
 def test_data_list_repr(ordered_list):
     assert repr(ordered_list) == \
         'LinkedList((3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39))'
