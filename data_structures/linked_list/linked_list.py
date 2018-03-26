@@ -99,11 +99,13 @@ class LinkedList:
         """
         if self.head is None:
             self.head = Node(value)
+            self._size += 1
             return
         node = self.head
         while node._next is not None:
             node = node._next
         node._next = Node(value)
+        self._size += 1
 
     def clear(self):
         raise NotImplementedError
@@ -146,6 +148,7 @@ class LinkedList:
         while node is not None:
             if node.value == key:
                 node._next = Node(value, node._next)
+                self._size += 1
                 return
             node = node._next
         raise LLError('insert_after key not in LinkedList')
@@ -158,11 +161,13 @@ class LinkedList:
             raise LLError('insert_before key not in LinkedList')
         if self.head.value == key:
             self.head = Node(value, self.head)
+            self._size += 1
             return
         node = self.head
         while node._next is not None:
             if node._next.value == key:
                 node._next = Node(value, node._next)
+                self._size += 1
                 return
             node = node._next
         raise LLError('insert_before key not in LinkedList')
@@ -171,7 +176,23 @@ class LinkedList:
         raise NotImplementedError
 
     def remove(self, value):
-        raise NotImplementedError
+        """
+        Remove given value from the list.
+        """
+        if self.head is None:
+            raise LLError('remove value not in LinkedList')
+        if self.head.value == value:
+            self.head = self.head._next
+            self._size -= 1
+            return
+        node = self.head
+        while node._next is not None:
+            if node._next.value == value:
+                node._next = node._next._next
+                self._size -= 1
+                return
+            node = node._next
+        raise LLError('remove value not in LinkedList')
 
     def reverse(self):
         raise NotImplementedError
