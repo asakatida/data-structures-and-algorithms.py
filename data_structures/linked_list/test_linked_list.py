@@ -1,3 +1,8 @@
+import pytest
+
+from .linked_list import LLError
+
+
 def test_empty_list_length(new_list):
     assert len(new_list) == 0
     assert new_list.head is None
@@ -55,6 +60,31 @@ def test_data_list_append(ordered_list):
 def test_unorder_list_append(unordered_list):
     unordered_list.append(2)
     assert tuple(unordered_list)[-1] == 2
+
+
+def test_empty_list_insert_after(new_list):
+    with pytest.raises(LLError):
+        new_list.insert_after(1, None)
+    with pytest.raises(LLError):
+        new_list.insert_after('a', None)
+    with pytest.raises(LLError):
+        new_list.insert_after({}, None)
+    with pytest.raises(LLError):
+        new_list.insert_after(None, None)
+
+
+def test_data_list_insert_after(ordered_list):
+    assert ordered_list.find(99) is False
+    ordered_list.insert_after(6, 99)
+    assert ordered_list.find(99) is True
+
+
+def test_unorder_list_insert_after(unordered_list):
+    assert unordered_list.find(87) is False
+    unordered_list.insert_after(0, 87)
+    assert unordered_list.find(87) is True
+    with pytest.raises(LLError):
+        unordered_list.insert_after(49, 87)
 
 
 def test_data_list_repr(ordered_list):
