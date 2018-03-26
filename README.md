@@ -21,8 +21,8 @@ Each project is also designed to support importing as a Python module.
 
 ## Table of Contents
 1. Data Structures
-    - [LinkedList](./data_structures/linked_list)
+    - [linked-list](./data_structures/linked_list)
 2. Algorithms
     - [binary-search](./challenges/binary_search)
     - [largest-product](./challenges/largest_product)
-    - [shift-array](./challenges/shift-array)
+    - [shift-array](./challenges/shift_array)
