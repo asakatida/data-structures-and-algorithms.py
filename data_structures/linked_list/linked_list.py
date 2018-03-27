@@ -179,7 +179,17 @@ class LinkedList:
         raise LLError('insert_before key not in LinkedList')
 
     def kth_from_end(self, k):
-        raise NotImplementedError
+        """
+        Retrieve kth node from the end of the list.
+        """
+        size = len(self)
+        index = size - k - 1
+        if not (0 <= index < size):
+            raise LLError('LinkedList index out of bounds')
+        node = self.head
+        for _ in range(index):
+            node = node._next
+        return node
 
     def pop(self, index=0):
         raise NotImplementedError
