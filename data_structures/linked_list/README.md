@@ -8,9 +8,10 @@ Implement the following methods.
 - `insert_after` insert a node with value after the first node containing key
 - `insert_before` insert a node with value before the first node containing key
 - `append` set a value as a node at the end of the list
-
-The stretch goal is to implement a `remove` method taking a key.
+- `remove` taking a key and removing the first node that contains the key
+- `kth_from_end` taking an integer index and returning the node k from end of list
 
 ## Solution
 Whiteboard Images
 - [06-append-insert](../../assets/06-append-insert.jpg)
+- [07-kth-from-end](../../assets/07-kth-from-end.jpg)
