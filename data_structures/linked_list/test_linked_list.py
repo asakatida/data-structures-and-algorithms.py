@@ -130,12 +130,31 @@ def test_empty_list_kth_from_end(new_list):
         new_list.kth_from_end(-1)
 
 
-def test_data_list_kth_from_end(ordered_list):
-    ordered_list.kth_from_end(3)
+def test_data_list_kth_from_end_0(ordered_list):
+    node = ordered_list.kth_from_end(0)
+    assert node is not None
+    assert node.value == 39
+    assert node._next is None
+
+
+def test_data_list_kth_from_end_1(ordered_list):
+    node = ordered_list.kth_from_end(1)
+    assert node is not None
+    assert node.value == 36
+    assert node._next._next is None
+
+
+def test_data_list_kth_from_end_3(ordered_list):
+    node = ordered_list.kth_from_end(3)
+    assert node is not None
+    assert node.value == 30
+    assert node._next._next._next._next is None
 
 
 def test_unorder_list_kth_from_end(unordered_list):
-    unordered_list.kth_from_end(0)
+    node = unordered_list.kth_from_end(0)
+    assert node._next is None
+    assert node.value == 6
 
 
 def test_unorder_list_insert_before_large(unordered_list):
