@@ -121,6 +121,23 @@ def test_unorder_list_insert_before(unordered_list):
     assert len(unordered_list) == 18
 
 
+def test_empty_list_kth_from_end(new_list):
+    with pytest.raises(LLError):
+        new_list.kth_from_end(1)
+    with pytest.raises(LLError):
+        new_list.kth_from_end(0)
+    with pytest.raises(LLError):
+        new_list.kth_from_end(-1)
+
+
+def test_data_list_kth_from_end(ordered_list):
+    ordered_list.kth_from_end(3)
+
+
+def test_unorder_list_kth_from_end(unordered_list):
+    unordered_list.kth_from_end(0)
+
+
 def test_unorder_list_insert_before_large(unordered_list):
     for i in range(0, 99, 3):
         for j in range(99, 0, -2):

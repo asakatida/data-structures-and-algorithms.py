@@ -178,6 +178,9 @@ class LinkedList:
             node = node._next
         raise LLError('insert_before key not in LinkedList')
 
+    def kth_from_end(self, k):
+        raise NotImplementedError
+
     def pop(self, index=0):
         raise NotImplementedError
 
