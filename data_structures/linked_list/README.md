@@ -11,6 +11,10 @@ Implement the following methods.
 - `remove` taking a key and removing the first node that contains the key
 - `kth_from_end` taking an integer index and returning the node k from end of list
 
+Implement the following methods
+
+- `mergeLists` zip two lists together and return the new head
+
 ## Solution
 Whiteboard Images
 - [06-append-insert](../../assets/06-append-insert.jpg)
