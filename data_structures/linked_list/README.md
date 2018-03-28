@@ -19,3 +19,4 @@ Implement the following methods
 Whiteboard Images
 - [06-append-insert](../../assets/06-append-insert.jpg)
 - [07-kth-from-end](../../assets/07-kth-from-end.jpg)
+- [08-merge](../../assets/08-merge.jpg)
