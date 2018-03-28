@@ -20,3 +20,4 @@ Whiteboard Images
 - [06-append-insert](../../assets/06-append-insert.jpg)
 - [07-kth-from-end](../../assets/07-kth-from-end.jpg)
 - [08-merge](../../assets/08-merge.jpg)
+- [08-merge-1](../../assets/08-merge-1.jpg)
