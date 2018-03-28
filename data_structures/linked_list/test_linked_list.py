@@ -1,7 +1,5 @@
 import pytest
 
-from .linked_list import LLError
-
 
 def test_empty_list_length(new_list):
     assert len(new_list) == 0
@@ -66,13 +64,13 @@ def test_unorder_list_append(unordered_list):
 
 
 def test_empty_list_insert_after(new_list):
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_after(1, None)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_after('a', None)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_after({}, None)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_after(None, None)
     assert len(new_list) == 0
 
@@ -88,19 +86,19 @@ def test_unorder_list_insert_after(unordered_list):
     assert unordered_list.find(87) is False
     unordered_list.insert_after(0, 87)
     assert unordered_list.find(87) is True
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         unordered_list.insert_after(49, 87)
     assert len(unordered_list) == 18
 
 
 def test_empty_list_insert_before(new_list):
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_before(1, None)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_before('a', None)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_before({}, None)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.insert_before(None, None)
     assert len(new_list) == 0
 
@@ -116,9 +114,50 @@ def test_unorder_list_insert_before(unordered_list):
     assert unordered_list.find(87) is False
     unordered_list.insert_before(0, 87)
     assert unordered_list.find(87) is True
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         unordered_list.insert_before(49, 87)
     assert len(unordered_list) == 18
+
+
+def test_empty_list_kth_from_end(new_list):
+    with pytest.raises(IndexError):
+        new_list.kth_from_end(1)
+    with pytest.raises(IndexError):
+        new_list.kth_from_end(0)
+    with pytest.raises(IndexError):
+        new_list.kth_from_end(-1)
+
+
+def test_data_list_kth_from_end_0(ordered_list):
+    node = ordered_list.kth_from_end(0)
+    assert node is not None
+    assert node.value == 39
+    assert node._next is None
+
+
+def test_data_list_kth_from_end_1(ordered_list):
+    node = ordered_list.kth_from_end(1)
+    assert node is not None
+    assert node.value == 36
+    assert node._next._next is None
+
+
+def test_data_list_kth_from_end_3(ordered_list):
+    node = ordered_list.kth_from_end(3)
+    assert node is not None
+    assert node.value == 30
+    assert node._next._next._next._next is None
+
+
+def test_unorder_list_kth_from_end(unordered_list):
+    node = unordered_list.kth_from_end(0)
+    assert node._next is None
+    assert node.value == 6
+
+
+def test_unorder_list_kth_from_end_index_error(unordered_list):
+    with pytest.raises(IndexError):
+        unordered_list.kth_from_end(len(unordered_list))
 
 
 def test_unorder_list_insert_before_large(unordered_list):
@@ -127,19 +166,19 @@ def test_unorder_list_insert_before_large(unordered_list):
             if unordered_list.find(i):
                 unordered_list.insert_before(i, j)
             else:
-                with pytest.raises(LLError):
+                with pytest.raises(ValueError):
                     unordered_list.insert_before(i, j)
     assert len(unordered_list) == 917
 
 
 def test_empty_list_remove(new_list):
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.remove(1)
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.remove('a')
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.remove({})
-    with pytest.raises(LLError):
+    with pytest.raises(ValueError):
         new_list.remove(None)
 
 
