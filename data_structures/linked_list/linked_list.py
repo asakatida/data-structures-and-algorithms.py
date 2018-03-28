@@ -1,10 +1,6 @@
 from .node import Node
 
 
-class LLError(Exception):
-    """Exception detailing errors from LinkedList methods."""
-
-
 class LinkedList:
     def __init__(self, it=()):
         """
@@ -161,14 +157,14 @@ class LinkedList:
             if node.value == key:
                 return self._insert_after(node, value)
             node = node._next
-        raise LLError('insert_after key not in LinkedList')
+        raise ValueError('insert_after key not in LinkedList')
 
     def insert_before(self, key, value):
         """
         Insert a value before the node containing key.
         """
         if self.head is None:
-            raise LLError('insert_before key not in LinkedList')
+            raise ValueError('insert_before key not in LinkedList')
         if self.head.value == key:
             return self._insert_head(value)
         node = self.head
@@ -176,7 +172,20 @@ class LinkedList:
             if node._next.value == key:
                 return self._insert_after(node, value)
             node = node._next
-        raise LLError('insert_before key not in LinkedList')
+        raise ValueError('insert_before key not in LinkedList')
+
+    def kth_from_end(self, k):
+        """
+        Retrieve kth node from the end of the list.
+        """
+        size = len(self)
+        index = size - k - 1
+        if not (0 <= index < size):
+            raise IndexError('LinkedList index out of bounds')
+        node = self.head
+        for _ in range(index):
+            node = node._next
+        return node
 
     def pop(self, index=0):
         raise NotImplementedError
@@ -186,7 +195,7 @@ class LinkedList:
         Remove given value from the list.
         """
         if self.head is None:
-            raise LLError('remove value not in LinkedList')
+            raise ValueError('remove value not in LinkedList')
         if self.head.value == value:
             return self._remove_head()
         node = self.head
@@ -194,7 +203,7 @@ class LinkedList:
             if node._next.value == value:
                 return self._remove_after(node)
             node = node._next
-        raise LLError('remove value not in LinkedList')
+        raise ValueError('remove value not in LinkedList')
 
     def reverse(self):
         raise NotImplementedError
