@@ -6,8 +6,7 @@ def merge_lists(aList, bList):
     if not a:
         return bList.head
     b = bList.head
-    a._next = b
     while a and b:
+        a._next, b = b, a._next
         a = a._next
-        b = b._next
     return node
