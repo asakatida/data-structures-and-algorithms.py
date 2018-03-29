@@ -6,13 +6,13 @@ class Node:
         self.value = value
         self._next = _next
 
-    def __repr__(self):
-        """
-        Return a formatted string representing Node.
-        """
-        if self._next is None:
-            return f'Node({ self.value !r})'
-        return f'Node({ self.value !r}, { self._next !r})'
+    # def __repr__(self):
+    #     """
+    #     Return a formatted string representing Node.
+    #     """
+    #     if self._next is None:
+    #         return f'Node({ self.value !r})'
+    #     return f'Node({ self.value !r}, { self._next !r})'
 
     def __str__(self):
         """
