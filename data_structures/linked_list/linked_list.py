@@ -143,6 +143,20 @@ class LinkedList:
         """
         Return a boolean indicating if the list has a loop of nodes.
         """
+        if not self.head:
+            return False
+        node1 = self.head
+        node2 = node1._next
+        while node2:
+            if node1 is node2:
+                return True
+            node2 = node2._next
+            if not node2:
+                return False
+            if node1 is node2:
+                return True
+            node1 = node1._next
+            node2 = node2._next
         return False
 
     def index(self, value, start=0, stop=-1):
