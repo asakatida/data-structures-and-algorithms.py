@@ -197,6 +197,12 @@ def test_data_list_has_loop_at_begin(ordered_list):
     assert ordered_list.has_loop() is True
 
 
+def test_data_list_has_loop_at_end(ordered_list):
+    node = ordered_list.kth_from_end(0)
+    node._next = node
+    assert ordered_list.has_loop() is True
+
+
 def test_ordered_list_clear(ordered_list):
     while len(ordered_list):
         ordered_list.remove(tuple(ordered_list)[-1])
