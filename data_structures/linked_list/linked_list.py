@@ -139,6 +139,12 @@ class LinkedList:
             node = node._next
         return False
 
+    def has_loop(self):
+        """
+        Return a boolean indicating if the list has a loop of nodes.
+        """
+        return False
+
     def index(self, value, start=0, stop=-1):
         raise NotImplementedError
 
