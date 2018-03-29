@@ -203,6 +203,10 @@ def test_data_list_has_loop_at_end(ordered_list):
     assert ordered_list.has_loop() is True
 
 
+def test_empty_list_has_loop(new_list):
+    assert new_list.has_loop() is False
+
+
 def test_ordered_list_clear(ordered_list):
     while len(ordered_list):
         ordered_list.remove(tuple(ordered_list)[-1])
