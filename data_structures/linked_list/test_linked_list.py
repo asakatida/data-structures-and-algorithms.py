@@ -188,6 +188,36 @@ def test_data_list_remove(ordered_list):
     assert ordered_list.find(6) is False
 
 
+def test_data_list_has_loop(ordered_list):
+    assert ordered_list.has_loop() is False
+
+
+def test_data_list_has_loop_at_begin(ordered_list):
+    ordered_list.head._next = ordered_list.head
+    assert ordered_list.has_loop() is True
+
+
+def test_data_list_has_loop_at_end(ordered_list):
+    node = ordered_list.kth_from_end(0)
+    node._next = node
+    assert ordered_list.has_loop() is True
+
+
+def test_empty_list_has_loop(new_list):
+    assert new_list.has_loop() is False
+
+
+def test_data_list_has_large_loop(unordered_list):
+    node1 = unordered_list.head
+    for _ in range(3):
+        node1 = node1._next
+    node2 = unordered_list.head
+    for _ in range(15):
+        node2 = node2._next
+    node2._next = node1
+    assert unordered_list.has_loop() is True
+
+
 def test_ordered_list_clear(ordered_list):
     while len(ordered_list):
         ordered_list.remove(tuple(ordered_list)[-1])
