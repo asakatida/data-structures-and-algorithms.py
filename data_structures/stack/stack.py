@@ -19,10 +19,16 @@ class Stack:
         return self._size
 
     def peek(self):
-        pass
+        if not self.head:
+            raise IndexError('')
+        return self.head.value
 
     def pop(self):
-        pass
+        if not self.head:
+            raise IndexError('')
+        node = self.head
+        self.head = self.head._next
+        return node.value
 
     def push(self, value):
         self.head = Node(value, self.head)
