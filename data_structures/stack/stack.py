@@ -12,6 +12,12 @@ class Stack:
         for value in it:
             self.push(value)
 
+    def __len__(self):
+        """
+        Return the number of values currently in the stack.
+        """
+        return self._size
+
     def peek(self):
         pass
 
