@@ -1,9 +1,13 @@
+from .node import Node
+
+
 class Stack:
     def __init__(self, it=()):
         """
         Initialize new list with optional iterable.
         """
         self.head = None
+        self._size = 0
 
         for value in it:
             self.push(value)
@@ -15,4 +19,5 @@ class Stack:
         pass
 
     def push(self, value):
-        pass
+        self.head = Node(value, self.head)
+        self._size += 1
