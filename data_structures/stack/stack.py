@@ -6,7 +6,7 @@ class Stack:
         self.head = None
 
         for value in it:
-            self.enqueue(value)
+            self.push(value)
 
     def peek(self):
         pass
