@@ -12,6 +12,12 @@ class Queue:
         for value in it:
             self.enqueue(value)
 
+    def __len__(self):
+        """
+        Return the number of values currently in the queue.
+        """
+        return self._size
+
     def dequeue(self):
         if not self.head:
             raise IndexError('')
