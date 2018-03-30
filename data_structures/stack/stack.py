@@ -8,8 +8,11 @@ class Stack:
         for value in it:
             self.enqueue(value)
 
-    def enqueue(self, value):
+    def peek(self):
         pass
 
-    def dequeue(self):
+    def pop(self):
+        pass
+
+    def push(self, value):
         pass
