@@ -10,13 +10,22 @@ class Queue:
         self._size = 0
 
         for value in it:
-            self.push(value)
-
-    def enqueue(self, value):
-        self.head = Node(value, self.head)
-        self._size += 1
+            self.enqueue(value)
 
     def dequeue(self):
         if not self.head:
             raise IndexError('')
+        node = self.head
+        if not self.head._next:
+            self.head = None
+            self._size -= 1
+            return node.value
+        while node._next._next:
+            node = node._next
+        node._next, node = None, node._next
         self._size -= 1
+        return node.value
+
+    def enqueue(self, value):
+        self.head = Node(value, self.head)
+        self._size += 1
