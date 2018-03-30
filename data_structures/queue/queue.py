@@ -19,6 +19,9 @@ class Queue:
         return self._size
 
     def dequeue(self):
+        """
+        Retrieve and remove the earliest item from the queue.
+        """
         if not self.head:
             raise IndexError('')
         node = self.head
@@ -33,5 +36,8 @@ class Queue:
         return node.value
 
     def enqueue(self, value):
+        """
+        Insert a value into the queue.
+        """
         self.head = Node(value, self.head)
         self._size += 1

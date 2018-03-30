@@ -19,11 +19,17 @@ class Stack:
         return self._size
 
     def peek(self):
+        """
+        Retrieve the most recent item on the stack.
+        """
         if not self.head:
             raise IndexError('')
         return self.head.value
 
     def pop(self):
+        """
+        Retrieve and remove the most recent item from the stack.
+        """
         if not self.head:
             raise IndexError('')
         node = self.head
@@ -31,5 +37,8 @@ class Stack:
         return node.value
 
     def push(self, value):
+        """
+        Insert a value into the stack.
+        """
         self.head = Node(value, self.head)
         self._size += 1
