@@ -41,7 +41,7 @@ class Queue:
         if not self.head:
             raise IndexError('')
         node = self.head
-        if not self.head._next:
+        if not node._next:
             self.head = None
             self._size -= 1
             return node.value
