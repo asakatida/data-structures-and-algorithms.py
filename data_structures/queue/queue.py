@@ -12,6 +12,22 @@ class Queue:
         for value in it:
             self.enqueue(value)
 
+    def __repr__(self):
+        """
+        Return a formatted string representing Queue.
+        """
+        if self.head:
+            return f'Queue(..., { self.head.value !r})'
+        return f'Queue()'
+
+    def __str__(self):
+        """
+        Return a string representing Queue.
+        """
+        if self.head:
+            return f'Queue head: { self.head.value }, size: { self._size }'
+        return f'Empty queue'
+
     def __len__(self):
         """
         Return the number of values currently in the queue.

@@ -12,6 +12,22 @@ class Stack:
         for value in it:
             self.push(value)
 
+    def __repr__(self):
+        """
+        Return a formatted string representing Stack.
+        """
+        if self.head:
+            return f'Stack({ self.head.value !r}, ...)'
+        return f'Stack()'
+
+    def __str__(self):
+        """
+        Return a string representing Stack.
+        """
+        if self.head:
+            return f'Stack head: { self.head.value }, size: { self._size }'
+        return f'Empty stack'
+
     def __len__(self):
         """
         Return the number of values currently in the stack.
