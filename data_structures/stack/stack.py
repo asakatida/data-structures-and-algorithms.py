@@ -50,6 +50,7 @@ class Stack:
             raise IndexError('')
         node = self.head
         self.head = self.head._next
+        self._size -= 1
         return node.value
 
     def push(self, value):
