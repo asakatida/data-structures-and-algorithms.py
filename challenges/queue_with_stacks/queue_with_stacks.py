@@ -35,6 +35,11 @@ class Queue:
         """
         Retrieve and remove the earliest item from the queue.
         """
+        if self.right:
+            return self.right.pop()
+        while self.left:
+            self.right.push(self.left.pop())
+        return self.right.pop()
 
     def enqueue(self, value):
         """
