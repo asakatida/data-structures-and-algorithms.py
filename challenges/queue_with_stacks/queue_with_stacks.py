@@ -40,3 +40,4 @@ class Queue:
         """
         Insert a value into the queue.
         """
+        self.left.push(value)
