@@ -3,20 +3,40 @@ from .stack import Stack
 
 class Queue:
     def __init__(self):
+        """
+        Initialize new queue.
+        """
         self.left = Stack()
         self.right = Stack()
 
     def __len__(self):
+        """
+        Return the number of values currently in the queue.
+        """
         return len(self.left) + len(self.right)
 
     def __repr__(self):
-        return ''
+        """
+        Return a formatted string representing queue.
+        """
+        if self:
+            return f'Queue({ self.left !r}, { self.right !r})'
+        return 'Queue()'
 
     def __str__(self):
-        return ''
+        """
+        Return a string representing queue.
+        """
+        if self:
+            return f'Queue output: { self.right }, size: { len(self) }'
+        return 'Empty queue'
 
     def dequeue(self):
-        pass
+        """
+        Retrieve and remove the earliest item from the queue.
+        """
 
     def enqueue(self, value):
-        pass
+        """
+        Insert a value into the queue.
+        """
