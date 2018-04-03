@@ -27,4 +27,5 @@ Each project is also designed to support importing as a Python module.
 2. Algorithms
     - [binary-search](./challenges/binary_search)
     - [largest-product](./challenges/largest_product)
+    - [queue-with-stacks](./challenges/queue_with_stacks)
     - [shift-array](./challenges/shift_array)
