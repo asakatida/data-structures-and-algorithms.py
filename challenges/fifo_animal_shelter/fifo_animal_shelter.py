@@ -3,14 +3,45 @@ from .queue import Queue
 
 class AnimalShelter:
     def __init__(self, it=()):
+        """
+        Initialize new queue with optional iterable.
+        """
         self.main_queue = Queue(it)
         self.spare_queue = Queue()
         self.spare_type = ''
 
+    def __len__(self):
+        """
+        Return the number of values currently in the queue.
+        """
+        return len(self.main_queue) + len(self.spare_queue)
+
+    def __repr__(self):
+        """
+        Return a formatted string representing queue.
+        """
+        if self:
+            return f'Queue({ self.main_queue !r}, { self.spare_queue !r})'
+        return 'Queue()'
+
+    def __str__(self):
+        """
+        Return a string representing queue.
+        """
+        if self:
+            return f'Queue output: { self.main_queue }, size: { len(self) }'
+        return 'Empty queue'
+
     def enqueue(self, animal):
+        """
+        Insert a animal into the queue.
+        """
         self.main_queue.enqueue(animal)
 
     def dequeue(self, prefer=None):
+        """
+        Retrieve and remove the earliest prefered animal from the queue.
+        """
         if prefer is None:
             if self.spare_queue:
                 return self.spare_queue.dequeue()

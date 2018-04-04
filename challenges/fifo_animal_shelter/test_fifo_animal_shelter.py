@@ -1,10 +1,6 @@
 import pytest
 
 
-def test_empty_queue_default(new_queue):
-    assert new_queue.head is None
-
-
 def test_empty_queue_dequeue(new_queue):
     with pytest.raises(IndexError):
         new_queue.dequeue()
@@ -16,13 +12,13 @@ def test_empty_queue_has_size(new_queue):
 
 def test_data_queue_dequeue_changes_size(ordered_queue):
     assert len(ordered_queue) == 13
-    assert ordered_queue.dequeue() == 3
+    assert ordered_queue.dequeue() == 'dog'
     assert len(ordered_queue) == 12
 
 
 def test_data_queue_dequeue(ordered_queue):
-    assert ordered_queue.dequeue() == 3
-    assert ordered_queue.dequeue() == 6
+    assert ordered_queue.dequeue() == 'dog'
+    assert ordered_queue.dequeue() == 'dog'
 
 
 def test_data_queue_dequeue_exaust(ordered_queue):
@@ -34,15 +30,10 @@ def test_data_queue_dequeue_exaust(ordered_queue):
 
 
 def test_unordered_dequeue(unordered_queue):
-    assert unordered_queue.dequeue() == 3
-    assert unordered_queue.dequeue() == 1
-    assert unordered_queue.dequeue() == 6
-    assert unordered_queue.dequeue() == 4
-
-
-def test_empty_queue_enqueue(new_queue):
-    new_queue.enqueue(0)
-    assert new_queue.head.value == 0
+    assert unordered_queue.dequeue() == 'cat'
+    assert unordered_queue.dequeue() == 'dog'
+    assert unordered_queue.dequeue() == 'cat'
+    assert unordered_queue.dequeue() == 'cat'
 
 
 def test_empty_queue_enqueue_multiple(new_queue):
@@ -55,5 +46,5 @@ def test_empty_queue_enqueue_multiple(new_queue):
 
 def test_empty_queue_enqueue_changes_size(new_queue):
     assert len(new_queue) == 0
-    new_queue.enqueue('test')
+    new_queue.enqueue('cat')
     assert len(new_queue) == 1
