@@ -28,5 +28,6 @@ Each project is also designed to support importing as a Python module.
     - [binary-search](./challenges/binary_search)
     - [fifo-animal-shelter](./challenges/fifo_animal_shelter)
     - [largest-product](./challenges/largest_product)
+    - [multi-bracket-validation](./challenges/multi_bracket_validation)
     - [queue-with-stacks](./challenges/queue_with_stacks)
     - [shift-array](./challenges/shift_array)
