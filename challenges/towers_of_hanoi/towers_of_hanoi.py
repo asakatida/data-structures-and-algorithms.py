@@ -5,14 +5,13 @@ def towers_of_hanoi(n, start='A', end='C', spare='B'):
     """
     Generate the steps of towers of hanoi.
     """
-    output = []
+    move = f'Disk { n } moved from { start } to { end }'
     if n == 1:
-        output.append(f'Disk { n } moved from { start } to { end }')
-    else:
-        output.extend(towers_of_hanoi(n - 1, start, spare, end))
-        output.append(f'Disk { n } moved from { start } to { end }')
-        output.extend(towers_of_hanoi(n - 1, spare, end, start))
-    return output
+        return [move]
+    return [
+        *towers_of_hanoi(n - 1, start, spare, end),
+        move,
+        *towers_of_hanoi(n - 1, spare, end, start)]
 
 
 def main():
