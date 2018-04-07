@@ -31,3 +31,4 @@ Each project is also designed to support importing as a Python module.
     - [multi-bracket-validation](./challenges/multi_bracket_validation)
     - [queue-with-stacks](./challenges/queue_with_stacks)
     - [shift-array](./challenges/shift_array)
+    - [towers-of-hanoi](./challenges/towers_of_hanoi)
