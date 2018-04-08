@@ -7,7 +7,7 @@ class BST:
 
         def __iter__(self):
             """
-            Iterate through an inorder traversal of the tree.
+            Iterate through an inorder traversal of the sub tree.
             """
             if self.left:
                 yield from self.left
@@ -15,12 +15,32 @@ class BST:
             if self.right:
                 yield from self.right
 
+        def post_order(self, visitor):
+            """
+            Visit each of the values in post order.
+            """
+            if self.left:
+                self.left.post_order(visitor)
+            if self.right:
+                self.right.post_order(visitor)
+            visitor(self.value)
+
+        def pre_order(self, visitor):
+            """
+            Visit each of the values in pre order.
+            """
+            visitor(self.value)
+            if self.left:
+                self.left.pre_order(visitor)
+            if self.right:
+                self.right.pre_order(visitor)
+
         def __repr__(self):
             """
             Return a formatted string representing Node.
             """
             return (
-                f'_Node({ self.value !r}, '
+                f'BST._Node({ self.value !r}, '
                 f'left={ self.left !r}, '
                 f'right={ self.right !r})')
 
@@ -52,7 +72,12 @@ class BST:
         """
         current = self.root
         while current:
-            pass
+            if current.value == value:
+                return True
+            if current.value < value:
+                current = current.right
+            else:
+                current = current.left
         return False
 
     def __iter__(self):
@@ -71,7 +96,9 @@ class BST:
         """
         Return a formatted string representing binary search tree.
         """
-        return f'BST(({ ", ".join(map(repr, self)) }))'
+        lst = []
+        self.pre_order(lst.append)
+        return f'BST(({ ", ".join(map(repr, lst)) }))'
 
     def __str__(self):
         """
@@ -114,22 +141,12 @@ class BST:
         """
         Visit each of the values in post order.
         """
-        def _visit(node):
-            if not node:
-                return
-            _visit(node.left)
-            _visit(node.right)
-            visitor(node.value)
-        _visit(self.root)
+        if self.root:
+            self.root.post_order(visitor)
 
     def pre_order(self, visitor):
         """
         Visit each of the values in pre order.
         """
-        def _visit(node):
-            if not node:
-                return
-            visitor(node.value)
-            _visit(node.left)
-            _visit(node.right)
-        _visit(self.root)
+        if self.root:
+            self.root.pre_order(visitor)
