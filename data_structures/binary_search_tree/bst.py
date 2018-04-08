@@ -5,6 +5,15 @@ class BST:
             self.left = None
             self.right = None
 
+        def __iter__(self):
+            """
+            """
+            if self.left:
+                yield from self.left
+            yield self.value
+            if self.right:
+                yield from self.right
+
         def __repr__(self):
             """
             Return a formatted string representing Node.
@@ -44,6 +53,7 @@ class BST:
     def __iter__(self):
         """
         """
+        yield from self.root
 
     def __len__(self):
         """
@@ -55,32 +65,33 @@ class BST:
         """
         Return a formatted string representing list.
         """
-        return f'LinkedList(({ ", ".join(map(repr, self)) }))'
+        return f'BST(({ ", ".join(map(repr, self)) }))'
 
     def __str__(self):
         """
         Return a string representing list contents.
         """
-        return f'[{ ", ".join(map(str, self)) }]'
-
-    def _insert_after(self, node, value):
-        node._next = self._Node(value, node._next)
-        self._size += 1
-
-    def _insert_head(self, value):
-        self.head = self._Node(value, self.head)
-        self._size += 1
-
-    def _remove_after(self, node):
-        node._next = node._next._next
-        self._size -= 1
-
-    def _remove_head(self):
-        self.head = self.head._next
-        self._size -= 1
+        return f'binary search tree root: { self.root }'
 
     def insert(self, value):
         """
         Insert a value into the head of the list.
         """
-        self._insert_head(value)
+        if self.root:
+            current = self.root
+            while True:
+                if current.value >= value:
+                    if not current.left:
+                        current.left = BST._Node(value)
+                        self._size += 1
+                        return
+                    current = current.left
+                else:
+                    if not current.right:
+                        current.right = BST._Node(value)
+                        self._size += 1
+                        return
+                    current = current.right
+        else:
+            self.root = BST._Node(value)
+            self._size += 1
