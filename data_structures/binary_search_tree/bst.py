@@ -7,6 +7,7 @@ class BST:
 
         def __iter__(self):
             """
+            Iterate through an inorder traversal of the tree.
             """
             if self.left:
                 yield from self.left
@@ -37,7 +38,7 @@ class BST:
 
     def __init__(self, it=()):
         """
-        Initialize new list with optional iterable.
+        Initialize new binary search tree with optional iterable.
         """
         self.root = None
         self._size = 0
@@ -47,35 +48,40 @@ class BST:
 
     def __contains__(self, value):
         """
-        Return a boolean indicating if the value is found in the list.
+        Indicate if the value is found in the binary search tree.
         """
+        current = self.root
+        while current:
+            pass
+        return False
 
     def __iter__(self):
         """
+        Iterate through an inorder traversal of the tree.
         """
         yield from self.root
 
     def __len__(self):
         """
-        Return the number of values currently in the list.
+        Return the number of values currently in the binary search tree.
         """
         return self._size
 
     def __repr__(self):
         """
-        Return a formatted string representing list.
+        Return a formatted string representing binary search tree.
         """
         return f'BST(({ ", ".join(map(repr, self)) }))'
 
     def __str__(self):
         """
-        Return a string representing list contents.
+        Return a string representing binary search tree contents.
         """
         return f'binary search tree root: { self.root }'
 
     def insert(self, value):
         """
-        Insert a value into the head of the list.
+        Insert a value into the binary search tree.
         """
         if self.root:
             current = self.root
@@ -95,3 +101,15 @@ class BST:
         else:
             self.root = BST._Node(value)
             self._size += 1
+
+    def in_order(self):
+        """
+        """
+
+    def post_order(self):
+        """
+        """
+
+    def pre_order(self):
+        """
+        """
