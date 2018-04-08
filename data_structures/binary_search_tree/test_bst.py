@@ -22,16 +22,16 @@ def test_data_bst_insert_changes_length(filled_bst):
 def test_data_bst_in_order_traverse(filled_bst):
     lst = []
     filled_bst.in_order(lst.append)
-    assert lst == []
+    assert lst == [1, 2, 3, 4, 6, 8, 9, 12]
 
 
 def test_data_bst_pre_order_traverse(filled_bst):
     lst = []
     filled_bst.pre_order(lst.append)
-    assert lst == []
+    assert lst == [4, 3, 2, 1, 8, 6, 12, 9]
 
 
 def test_data_bst_post_order_traverse(filled_bst):
     lst = []
     filled_bst.post_order(lst.append)
-    assert lst == []
+    assert lst == [1, 2, 3, 6, 9, 12, 8, 4]

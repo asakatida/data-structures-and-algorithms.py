@@ -86,7 +86,9 @@ class BST:
         if self.root:
             current = self.root
             while True:
-                if current.value >= value:
+                if current.value == value:
+                    return
+                if current.value > value:
                     if not current.left:
                         current.left = BST._Node(value)
                         self._size += 1
@@ -115,6 +117,9 @@ class BST:
         def _visit(node):
             if not node:
                 return
+            _visit(node.left)
+            _visit(node.right)
+            visitor(node.value)
         _visit(self.root)
 
     def pre_order(self, visitor):
@@ -124,4 +129,7 @@ class BST:
         def _visit(node):
             if not node:
                 return
+            visitor(node.value)
+            _visit(node.left)
+            _visit(node.right)
         _visit(self.root)
