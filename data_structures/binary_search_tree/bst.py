@@ -102,14 +102,26 @@ class BST:
             self.root = BST._Node(value)
             self._size += 1
 
-    def in_order(self):
+    def in_order(self, visitor):
         """
+        Visit each of the values in order.
         """
+        set(map(visitor, self))
 
-    def post_order(self):
+    def post_order(self, visitor):
         """
+        Visit each of the values in post order.
         """
+        def _visit(node):
+            if not node:
+                return
+        _visit(self.root)
 
-    def pre_order(self):
+    def pre_order(self, visitor):
         """
+        Visit each of the values in pre order.
         """
+        def _visit(node):
+            if not node:
+                return
+        _visit(self.root)
