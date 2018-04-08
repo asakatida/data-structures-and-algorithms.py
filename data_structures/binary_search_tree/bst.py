@@ -1,6 +1,3 @@
-from .node import Node
-
-
 class BST:
     class _Node:
         def __init__(self, value):
@@ -67,11 +64,11 @@ class BST:
         return f'[{ ", ".join(map(str, self)) }]'
 
     def _insert_after(self, node, value):
-        node._next = Node(value, node._next)
+        node._next = self._Node(value, node._next)
         self._size += 1
 
     def _insert_head(self, value):
-        self.head = Node(value, self.head)
+        self.head = self._Node(value, self.head)
         self._size += 1
 
     def _remove_after(self, node):
