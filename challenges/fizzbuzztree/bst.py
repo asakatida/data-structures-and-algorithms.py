@@ -84,7 +84,8 @@ class BST:
         """
         Iterate through an inorder traversal of the tree.
         """
-        yield from self.root
+        if self.root:
+            yield from self.root
 
     def __len__(self):
         """
