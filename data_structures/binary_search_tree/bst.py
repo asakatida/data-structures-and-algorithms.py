@@ -1,3 +1,6 @@
+from .queue import Queue
+
+
 class BST:
     class _Node:
         def __init__(self, value):
@@ -106,6 +109,21 @@ class BST:
         Return a string representing binary search tree contents.
         """
         return f'binary search tree root: { self.root }'
+
+    def breadth_first_traversal(self, visitor):
+        """
+        Visit each of the values in breadth first order.
+        """
+        if not self.root:
+            return
+        queue = Queue([self.root])
+        while queue:
+            node = queue.dequeue()
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
+            visitor(node.value)
 
     def insert(self, value):
         """
