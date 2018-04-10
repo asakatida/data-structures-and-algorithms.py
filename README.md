@@ -27,6 +27,7 @@ Each project is also designed to support importing as a Python module.
     - [stack](./data_structures/stack)
 2. Algorithms
     - [binary-search](./challenges/binary_search)
+    - [breadth-first-traversal](./challenges/breadth_first_traversal)
     - [fifo-animal-shelter](./challenges/fifo_animal_shelter)
     - [largest-product](./challenges/largest_product)
     - [multi-bracket-validation](./challenges/multi_bracket_validation)
