@@ -1,12 +1,22 @@
 from .bst import BST
-import pytest
+from pytest import fixture
 
 
-@pytest.fixture
+@fixture
 def new_bst():
     return BST()
 
 
-@pytest.fixture
+@fixture
 def filled_bst():
-    return BST(i for j in range(4, 0, -1) for i in range(j, j * 4, j))
+    return BST([4, 3, 2, 1, 8, 6, 12, 9])
+
+
+@fixture
+def left_bst():
+    return BST(range(9, -9, -2))
+
+
+@fixture
+def right_bst():
+    return BST(range(-9, 9, 3))
