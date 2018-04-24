@@ -22,6 +22,12 @@ class Node:
         """
         return f'node val: ({ self.val })'
 
+    def insert(self, val):
+        """
+        Insert a val as a child of node.
+        """
+        self.child = Node(val, self.child)
+
     def post_order(self, visitor):
         """
         Visit each of the values in post order.
@@ -55,14 +61,17 @@ class KTree:
         """
         Indicate if the val is found in the k tree.
         """
-        current = self.root
-        while current:
-            if current.val == val:
-                return True
-            if current.val < val:
-                current = current.right
-            else:
-                current = current.left
+        if not self.root:
+            return False
+        queue = Queue([self.root])
+        while queue:
+            current = queue.dequeue()
+            while current:
+                if current.child:
+                    queue.enqueue(current.child)
+                if current.val == val:
+                    return True
+                current = current.sibling
         return False
 
     def __len__(self):
@@ -83,9 +92,9 @@ class KTree:
         """
         return f'k-tree root: { self.root }'
 
-    def breadth_first(self, visitor):
+    def _breadth_first(self, visitor):
         """
-        Visit each of the values in breadth first order.
+        Visit each of the nodes in breadth first order.
         """
         if not self.root:
             return
@@ -95,26 +104,28 @@ class KTree:
             while current:
                 if current.child:
                     queue.enqueue(current.child)
-                visitor(current.val)
+                visitor(current)
                 current = current.sibling
+
+    def breadth_first(self, visitor):
+        """
+        Visit each of the values in breadth first order.
+        """
+        self._breadth_first(lambda node: visitor(node.val))
 
     def insert(self, parent, val):
         """
-        Insert a val into the k tree.
+        Insert a val into the k tree at all matching parents.
         """
-        queue = Queue([self.root])
-        while queue:
-            current = queue.dequeue()
-            while current:
-                if current.child:
-                    queue.enqueue(current.child)
-                if current.val == parent:
-                    current.child = Node(val, current.child)
+        if not self.root:
+            self.root = Node(val)
+            self._size += 1
+        else:
+            def insert(node):
+                if node.val == parent:
+                    node.insert(val)
                     self._size += 1
-                    return
-                current = current.sibling
-        self.root.child = Node(val, self.root.child)
-        self._size += 1
+            self._breadth_first(insert)
 
     def post_order(self, visitor):
         """
