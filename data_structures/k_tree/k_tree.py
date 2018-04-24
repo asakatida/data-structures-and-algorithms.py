@@ -22,24 +22,14 @@ class Node:
         """
         return f'node val: ({ self.val })'
 
-    def breadth_first(self, visitor):
-        """
-        Visit each of the values in breadth first order.
-        """
-        if self.left:
-            self.left.post_order(visitor)
-        if self.right:
-            self.right.post_order(visitor)
-        visitor(self.val)
-
     def post_order(self, visitor):
         """
         Visit each of the values in post order.
         """
-        if self.left:
-            self.left.post_order(visitor)
-        if self.right:
-            self.right.post_order(visitor)
+        if self.child:
+            self.child.post_order(visitor)
+        if self.sibling:
+            self.sibling.post_order(visitor)
         visitor(self.val)
 
     def pre_order(self, visitor):
@@ -47,10 +37,10 @@ class Node:
         Visit each of the values in pre order.
         """
         visitor(self.val)
-        if self.left:
-            self.left.pre_order(visitor)
-        if self.right:
-            self.right.pre_order(visitor)
+        if self.child:
+            self.child.pre_order(visitor)
+        if self.sibling:
+            self.sibling.pre_order(visitor)
 
 
 class KTree:
@@ -101,37 +91,30 @@ class KTree:
             return
         queue = Queue([self.root])
         while queue:
-            node = queue.dequeue()
-            if node.left:
-                queue.enqueue(node.left)
-            if node.right:
-                queue.enqueue(node.right)
-            visitor(node.val)
+            current = queue.dequeue()
+            while current:
+                if current.child:
+                    queue.enqueue(current.child)
+                visitor(current.val)
+                current = current.sibling
 
     def insert(self, parent, val):
         """
         Insert a val into the k tree.
         """
-        if self.root:
-            current = self.root
-            while True:
-                if current.val == val:
+        queue = Queue([self.root])
+        while queue:
+            current = queue.dequeue()
+            while current:
+                if current.child:
+                    queue.enqueue(current.child)
+                if current.val == parent:
+                    current.child = Node(val, current.child)
+                    self._size += 1
                     return
-                if current.val > val:
-                    if not current.left:
-                        current.left = Node(val)
-                        self._size += 1
-                        return
-                    current = current.left
-                else:
-                    if not current.right:
-                        current.right = Node(val)
-                        self._size += 1
-                        return
-                    current = current.right
-        else:
-            self.root = Node(val)
-            self._size += 1
+                current = current.sibling
+        self.root.child = Node(val, self.root.child)
+        self._size += 1
 
     def post_order(self, visitor):
         """
