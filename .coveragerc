@@ -17,6 +17,9 @@ omit =
   challenges/fizzbuzztree/bst.py
   challenges/multi_bracket_validation/node.py
   challenges/multi_bracket_validation/stack.py
+  challenges/print_level_order/k_tree.py
+  challenges/print_level_order/node.py
+  challenges/print_level_order/queue.py
   challenges/queue_with_stacks/node.py
   challenges/queue_with_stacks/stack.py
   challenges/towers_of_hanoi/node.py
