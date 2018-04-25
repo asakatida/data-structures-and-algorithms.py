@@ -1,20 +1,24 @@
+from .queue import Queue
+
+
 def print_level_order(tree):
     """
-    Transform the node values of the tree to fizzbuzz results.
+    Output string with a line per level of the tree.
     """
-    def _walk(node):
-        if not node:
-            return
-        _walk(node.right)
-        _walk(node.left)
-        if node.value % 3 == 0:
-            if node.value % 5 == 0:
-                node.value = 'fizzbuzz'
-            else:
-                node.value = 'fizz'
-        elif node.value % 5 == 0:
-            node.value = 'buzz'
-        else:
-            node.value = str(node.value)
-    _walk(tree.root)
-    return tree
+    if not tree.root:
+        return ''
+    queue = Queue([tree.root])
+    next_queue = Queue()
+    output = [[]]
+    while queue or next_queue:
+        if not queue:
+            queue, next_queue = next_queue, queue
+            output.append([])
+            continue
+        node = queue.dequeue()
+        output[-1].append(str(node.val))
+        child = node.child
+        while child:
+            next_queue.enqueue(child)
+            child = child.sibling
+    return '\n'.join(map(' '.join, output))
