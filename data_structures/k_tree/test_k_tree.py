@@ -1,0 +1,51 @@
+def test_empty_k_tree_length(new_k_tree):
+    assert len(new_k_tree) == 0
+    assert new_k_tree.root is None
+
+
+def test_empty_k_tree_contains(new_k_tree):
+    assert 0 not in new_k_tree
+    new_k_tree.insert(None, 0)
+    assert 0 in new_k_tree
+
+
+def test_data_k_tree_contains(filled_k_tree):
+    assert 9 in filled_k_tree
+    assert (12 in filled_k_tree) is False
+    assert 6 in filled_k_tree
+    assert 1 in filled_k_tree
+
+
+def test_empty_k_tree_insert(new_k_tree):
+    new_k_tree.insert(None, 1)
+    assert new_k_tree.root is not None
+    assert 1 in new_k_tree
+
+
+def test_data_k_tree_has_length(filled_k_tree):
+    assert len(filled_k_tree) > 0
+
+
+def test_data_k_tree_insert_changes_length(filled_k_tree):
+    start_len = len(filled_k_tree)
+    filled_k_tree.insert(1, -1)
+    filled_k_tree.insert(1, -2)
+    assert len(filled_k_tree) - start_len == 2
+    assert -2 in filled_k_tree
+
+
+def test_data_k_tree_insert_negative_left(filled_k_tree):
+    filled_k_tree.insert(None, -1)
+    assert -1 not in filled_k_tree
+
+
+def test_data_k_tree_pre_order_traverse(filled_k_tree):
+    lst = []
+    filled_k_tree.pre_order(lst.append)
+    assert lst == [1, 2, 5, 8, 9, 3, 4, 6, 7]
+
+
+def test_data_k_tree_post_order_traverse(filled_k_tree):
+    lst = []
+    filled_k_tree.post_order(lst.append)
+    assert lst == [9, 8, 5, 7, 6, 4, 3, 2, 1]
