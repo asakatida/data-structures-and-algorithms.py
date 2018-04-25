@@ -26,11 +26,13 @@ def test_fizz_bst_fizzbuzztree_in_order_traverse(fizz_buzz_bst):
     fizz_buzz_bst = fizzbuzztree(fizz_buzz_bst)
     lst = []
     fizz_buzz_bst.in_order(lst.append)
-    assert lst == ['fizzbuzz', 'fizz', 'buzz', '7', 'fizzbuzz', 'fizzbuzz', 'fizzbuzz']
+    assert lst == [
+        'fizzbuzz', 'fizz', 'buzz', '7', 'fizzbuzz', 'fizzbuzz', 'fizzbuzz']
 
 
 def test_fizz_bst_fizzbuzztree_pre_order_traverse(fizz_buzz_bst):
     fizz_buzz_bst = fizzbuzztree(fizz_buzz_bst)
     lst = []
     fizz_buzz_bst.pre_order(lst.append)
-    assert lst == ['fizzbuzz', 'fizz', 'fizzbuzz', 'buzz', '7', 'fizzbuzz', 'fizzbuzz']
+    assert lst == [
+        'fizzbuzz', 'fizz', 'fizzbuzz', 'buzz', '7', 'fizzbuzz', 'fizzbuzz']
