@@ -23,6 +23,16 @@ def filled_k_tree():
 
 
 @fixture
+def non_unique_k_tree():
+    k_tree = KTree()
+    k_tree.insert(None, 2)
+    k_tree.insert(2, 2)
+    k_tree.insert(2, 2)
+    k_tree.insert(2, 2)
+    return k_tree
+
+
+@fixture
 def linked_list_k_tree():
     k_tree = KTree()
     k_tree.insert(None, 10)
