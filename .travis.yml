@@ -1,5 +1,10 @@
 language: python
 python:
   - "3.6"
+before_script:
+  - pip install --quiet coveralls pytest
 script:
   - pytest
+  - coverage run pytest
+after_script:
+  - coveralls
