@@ -121,11 +121,11 @@ class KTree:
             self.root = Node(val)
             self._size += 1
         else:
-            def insert(node):
+            def node_insert(node):
                 if node.val == parent:
                     node.insert(val)
                     self._size += 1
-            self._breadth_first(insert)
+            self._breadth_first(node_insert)
 
     def post_order(self, visitor):
         """
