@@ -11,6 +11,9 @@ omit =
   challenges/breadth_first_traversal/queue.py
   challenges/fifo_animal_shelter/node.py
   challenges/fifo_animal_shelter/queue.py
+  challenges/find_matches/k_tree.py
+  challenges/find_matches/node.py
+  challenges/find_matches/queue.py
   challenges/find_maximum_value_binary_tree/bst.py
   challenges/find_maximum_value_binary_tree/node.py
   challenges/find_maximum_value_binary_tree/queue.py
