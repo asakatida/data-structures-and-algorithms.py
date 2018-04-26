@@ -1,6 +1,19 @@
 from .stack import Stack
 
 
+def towers_of_hanoi_list(n):
+    """
+    Generate the steps of towers of hanoi.
+    """
+    move = f'Disk { n } moved from { start } to { end }'
+    if n == 1:
+        return [move]
+    result = towers_of_hanoi(n - 1, start, spare, end)
+    result.append(move)
+    result.extend(towers_of_hanoi(n - 1, spare, end, start))
+    return result
+
+
 class _Move:
     def __init__(self, disk, start='A', end='C', spare='B'):
         self.disk = disk
