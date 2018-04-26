@@ -34,7 +34,8 @@ def test_yieldItemsWithItem_position_at_end():
 
 
 def test_yieldItemsWithItem_odd_length():
-    assert list(shift_array.yieldItemsWithItem(['', ''], list, 3, 1)) == ['', list, '']
+    assert list(
+        shift_array.yieldItemsWithItem(['', ''], list, 3, 1)) == ['', list, '']
 
 
 def test_yieldItemsWithoutPos_empty_array():
@@ -58,7 +59,8 @@ def test_insertShiftArray_inserts_in_odd_array_length():
 
 
 def test_insertShiftArray_inserts_in_even_array_length():
-    assert shift_array.insertShiftArray([None] * 4, 7) == [None, None, 7, None, None]
+    assert shift_array.insertShiftArray(
+        [None] * 4, 7) == [None, None, 7, None, None]
 
 
 def test_insertShiftArray_inserts_in_array_length_one():
@@ -66,7 +68,8 @@ def test_insertShiftArray_inserts_in_array_length_one():
 
 
 def test_insertShiftArray_inserts_in_mixed_type_array():
-    assert shift_array.insertShiftArray([1, 2, '3', 'FOUR'], 7.5) == [1, 2, 7.5, '3', 'FOUR']
+    assert shift_array.insertShiftArray(
+        [1, 2, '3', 'FOUR'], 7.5) == [1, 2, 7.5, '3', 'FOUR']
 
 
 def test_removeShiftArray_empty_array():
