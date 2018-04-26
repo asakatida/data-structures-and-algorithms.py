@@ -1,4 +1,4 @@
-from .stack import Stack
+_MAP = dict(zip('[({', '])}'))
 
 
 def multi_bracket_validation(input):
@@ -15,23 +15,15 @@ def multi_bracket_validation(input):
     - `}}`
     - `][`
     """
-    openers = Stack()
-    for c in input:
-        if c in '[({':
-            openers.push(c)
-        elif c == ']':
-            if not openers:
+    def _recurse(it, opener=None):
+        for c in it:
+            if c in _MAP.keys():
+                if not _recurse(it, c):
+                    return False
+            if opener is not None and _MAP[opener] == c:
+                return True
+            if c in _MAP.values():
                 return False
-            if openers.pop() != '[':
-                return False
-        elif c == ')':
-            if not openers:
-                return False
-            if openers.pop() != '(':
-                return False
-        elif c == '}':
-            if not openers:
-                return False
-            if openers.pop() != '{':
-                return False
-    return not openers
+        return True if opener is None else False
+
+    return _recurse(iter(input))

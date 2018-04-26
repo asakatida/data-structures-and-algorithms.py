@@ -1,6 +1,18 @@
 from .queue import Queue
 
 
+class Animal:
+    pass
+
+
+class Cat(Animal):
+    pass
+
+
+class Dog(Animal):
+    pass
+
+
 class AnimalShelter:
     def __init__(self, it=()):
         """
@@ -8,7 +20,7 @@ class AnimalShelter:
         """
         self.main_queue = Queue(it)
         self.spare_queue = Queue()
-        self.spare_type = ''
+        self.spare_type = type(None)
 
     def __len__(self):
         """
@@ -36,6 +48,8 @@ class AnimalShelter:
         """
         Insert a animal into the queue.
         """
+        if not isinstance(animal, (Cat, Dog)):
+            raise TypeError('animal must be a cat or dog')
         self.main_queue.enqueue(animal)
 
     def dequeue(self, prefer=None):
@@ -46,11 +60,13 @@ class AnimalShelter:
             if self.spare_queue:
                 return self.spare_queue.dequeue()
             return self.main_queue.dequeue()
+        if prefer not in (Cat, Dog):
+            raise ValueError('shelter only provides cats and dogs')
         if prefer == self.spare_type:
             return self.spare_queue.dequeue()
         while True:
             top = self.main_queue.dequeue()
-            if top == prefer:
+            if isinstance(top, prefer):
                 return top
             self.spare_queue.enqueue(top)
-            self.spare_type = top
+            self.spare_type = type(top)
