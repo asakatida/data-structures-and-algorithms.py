@@ -1,4 +1,4 @@
-#### Repository Documentation
+# Structure Repository Documentation
 
 [![Build Status](https://travis-ci.org/grandquista/data-structures-and-algorithms.svg?branch=master)](https://travis-ci.org/grandquista/data-structures-and-algorithms) [![Coverage Status](https://coveralls.io/repos/github/grandquista/data-structures-and-algorithms/badge.svg?branch=master)](https://coveralls.io/github/grandquista/data-structures-and-algorithms?branch=master)
 
@@ -6,7 +6,7 @@ This is a collection of data structures whiteboard challenge solutions. It can b
 
 `git clone https://github.com/grandquista/data-structures-and-algorithms`
 
-# Data Structure & Algorithms
+## Data Structure & Algorithms
 
 Implementations for common computer science data structures, and solutions to whiteboard questions in Psuedocode and Python.
 
@@ -18,7 +18,7 @@ Each linked project in the TOC is designed to be tested in an isolated virtual e
 * `. ENV/bin/activate`
 Each project is also designed to support importing as a Python module.
 
-## Table of Contents
+# Table of Contents
 1. Data Structures
     - [binary-search-tree](./data_structures/binary_search_tree)
     - [k-tree](./data_structures/k_tree)
