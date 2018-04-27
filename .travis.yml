@@ -7,5 +7,5 @@ script:
   - pytest
 after_script:
   - pip install --quiet coveralls
-  - coverage run pytest
+  - coverage run setup.py test
   - coveralls

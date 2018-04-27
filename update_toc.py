@@ -23,7 +23,7 @@ def main():
         return chain.from_iterable(starmap(inner, groupby(contents, get_key)))
     this_file = Path(__file__)
     readme = this_file.resolve().with_name('README.md')
-    toc_line = '## Table of Contents\n'
+    toc_line = '# Table of Contents\n'
     with readme.open() as istream:
         lines = tuple(takewhile(lambda line: line != toc_line, istream))
     contents = sorted(map(
