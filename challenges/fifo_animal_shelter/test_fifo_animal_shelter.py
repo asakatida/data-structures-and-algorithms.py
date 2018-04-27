@@ -7,6 +7,22 @@ def test_empty_queue_dequeue(new_queue):
         new_queue.dequeue()
 
 
+def test_content_in_empty_queue_str(new_queue):
+    assert len(str(new_queue)) > 0
+
+
+def test_content_in_queue_str(ordered_queue):
+    assert len(str(ordered_queue)) > 0
+
+
+def test_content_in_empty_queue_repr(new_queue):
+    assert len(repr(new_queue)) > 0
+
+
+def test_content_in_queue_repr(unordered_queue):
+    assert len(repr(unordered_queue)) > 0
+
+
 def test_empty_queue_has_size(new_queue):
     assert len(new_queue) == 0
 
@@ -37,6 +53,15 @@ def test_unordered_dequeue(unordered_queue):
     assert isinstance(unordered_queue.dequeue(), Cat)
 
 
+def test_enqueue_not_animal_raises(new_queue):
+    with raises(TypeError):
+        new_queue.enqueue(None)
+    with raises(TypeError):
+        new_queue.enqueue('None')
+    with raises(TypeError):
+        new_queue.enqueue(3.14)
+
+
 def test_empty_queue_enqueue_multiple(new_queue):
     for _ in range(30):
         new_queue.enqueue(Cat())
@@ -46,7 +71,33 @@ def test_empty_queue_enqueue_multiple(new_queue):
     assert isinstance(new_queue.dequeue(Dog), Dog)
 
 
+def test_empty_queue_dequeue_spare(new_queue):
+    for _ in range(30):
+        new_queue.enqueue(Cat())
+    new_queue.enqueue(Dog())
+    assert len(new_queue) == 31
+    assert isinstance(new_queue.dequeue(Dog), Dog)
+    assert isinstance(new_queue.dequeue(), Cat)
+
+
+def test_empty_queue_dequeue_spare_late(new_queue):
+    for _ in range(30):
+        new_queue.enqueue(Cat())
+    for _ in range(15):
+        new_queue.enqueue(Dog())
+    assert isinstance(new_queue.dequeue(Dog), Dog)
+    assert isinstance(new_queue.dequeue(Cat), Cat)
+    assert isinstance(new_queue.dequeue(), Cat)
+
+
 def test_empty_queue_enqueue_changes_size(new_queue):
     assert len(new_queue) == 0
     new_queue.enqueue(Cat())
     assert len(new_queue) == 1
+
+
+def test_dequeue_not_animal_raises(unordered_queue):
+    with raises(ValueError):
+        unordered_queue.dequeue(str)
+    with raises(ValueError):
+        unordered_queue.dequeue(int)

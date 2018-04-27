@@ -60,7 +60,7 @@ class AnimalShelter:
             if self.spare_queue:
                 return self.spare_queue.dequeue()
             return self.main_queue.dequeue()
-        if prefer not in (Cat, Dog):
+        if not issubclass(prefer, Animal):
             raise ValueError('shelter only provides cats and dogs')
         if prefer == self.spare_type:
             return self.spare_queue.dequeue()
