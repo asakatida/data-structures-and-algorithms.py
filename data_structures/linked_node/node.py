@@ -16,16 +16,6 @@ class Node:
             return f'Node({ self.value !r})'
         return f'Node({ self.value !r}, { self._next !r})'
 
-    def __str__(self):
-        """
-        Return a string representing Node.
-        """
-        return f'''({
-            self.value
-        }, {
-            "<END>"if self._next is None else "..."
-        })'''
-
     def _has_loop(self):
         """
         Return a boolean indicating if the list has a loop of nodes.
@@ -43,3 +33,13 @@ class Node:
             node1 = node1._next
             node2 = node2._next
         return False
+
+    def __str__(self):
+        """
+        Return a string representing Node.
+        """
+        return f'''({
+            self.value
+        }, {
+            "<END>"if self._next is None else "..."
+        })'''
