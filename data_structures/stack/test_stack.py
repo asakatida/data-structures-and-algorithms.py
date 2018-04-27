@@ -1,4 +1,4 @@
-import pytest
+from pytest import raises
 
 
 def test_empty_stack_default(new_stack):
@@ -6,7 +6,7 @@ def test_empty_stack_default(new_stack):
 
 
 def test_empty_stack_pop(new_stack):
-    with pytest.raises(IndexError):
+    with raises(IndexError):
         new_stack.pop()
 
 
@@ -29,7 +29,7 @@ def test_data_stack_pop_exaust(ordered_stack):
     while ordered_stack:
         ordered_stack.pop()
     assert len(ordered_stack) == 0
-    with pytest.raises(IndexError):
+    with raises(IndexError):
         ordered_stack.pop()
 
 

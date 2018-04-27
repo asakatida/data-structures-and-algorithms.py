@@ -1,4 +1,4 @@
-import pytest
+from pytest import raises
 
 
 def test_empty_queue_default(new_queue):
@@ -6,7 +6,7 @@ def test_empty_queue_default(new_queue):
 
 
 def test_empty_queue_dequeue(new_queue):
-    with pytest.raises(IndexError):
+    with raises(IndexError):
         new_queue.dequeue()
 
 
@@ -29,7 +29,7 @@ def test_data_queue_dequeue_exaust(ordered_queue):
     while ordered_queue:
         ordered_queue.dequeue()
     assert len(ordered_queue) == 0
-    with pytest.raises(IndexError):
+    with raises(IndexError):
         ordered_queue.dequeue()
 
 

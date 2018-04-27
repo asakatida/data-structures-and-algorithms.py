@@ -1,7 +1,7 @@
 from .stack import Stack
 
 
-def towers_of_hanoi_list(n):
+def towers_of_hanoi_list(n, start='A', end='C', spare='B'):
     """
     Generate the steps of towers of hanoi.
     """

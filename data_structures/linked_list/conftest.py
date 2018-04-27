@@ -1,5 +1,4 @@
 from .linked_list import LinkedList
-from .node import Node
 import pytest
 
 
@@ -16,13 +15,3 @@ def ordered_list():
 @pytest.fixture
 def unordered_list():
     return LinkedList(tuple(map(lambda i: i % 7, range(73, 40, -2))))
-
-
-@pytest.fixture
-def new_node():
-    return Node(None)
-
-
-@pytest.fixture
-def chained_node():
-    return Node(1, Node(2, Node(3)))

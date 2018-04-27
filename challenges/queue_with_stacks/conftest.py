@@ -1,27 +1,27 @@
 from .queue_with_stacks import Queue
-import pytest
+from pytest import fixture
 
 
-@pytest.fixture
+@fixture
 def new_queue():
     return Queue()
 
 
-@pytest.fixture
+@fixture
 def ordered_queue():
     queue = Queue()
     set(map(queue.enqueue, range(3, 40, 3)))
     return queue
 
 
-@pytest.fixture
+@fixture
 def unordered_queue():
     queue = Queue()
     set(map(queue.enqueue, map(lambda i: i % 7, range(73, 40, -2))))
     return queue
 
 
-@pytest.fixture
+@fixture
 def large_queue():
     queue = Queue()
     set(map(queue.enqueue, range(0xFFFFFF)))
