@@ -49,3 +49,8 @@ def test_data_hash_table_set_negative_left(filled_hash_table):
     filled_hash_table.set('None', -1)
     with raises(TypeError):
         assert -1 not in filled_hash_table
+
+
+def test_bad_hash_contains(bad_hash_table):
+    assert 'abcd' in bad_hash_table
+    assert 'edba' in bad_hash_table
