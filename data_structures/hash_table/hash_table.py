@@ -106,10 +106,14 @@ class HashTable:
         Deletes the entry associated with a key.
         """
         bucket = self._bucket(key)
+        if bucket is None:
+            return
         if isinstance(bucket, Node):
-            for node in bucket:
-                if node.key == key:
-                    pass
-        else:
             self._create_bucket(key, None)
-        self._size -= 1
+            self._size -= 1
+            return
+        for node in bucket:
+            if node.key == key:
+                bucket.remove(node)
+                self._size -= 1
+                break

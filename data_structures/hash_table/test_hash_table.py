@@ -6,12 +6,15 @@ def test_empty_hash_table_length(new_hash_table):
     assert isinstance(new_hash_table.buckets, list)
 
 
-def test_empty_hash_table_contains(new_hash_table):
-    with raises(TypeError):
-        assert 0 not in new_hash_table
+def test_empty_hash_table_insert_repeat(new_hash_table):
+    assert 'None' not in new_hash_table
     new_hash_table.set('None', 0)
-    with raises(TypeError):
-        assert 0 in new_hash_table
+    new_hash_table.set('None', 1)
+    assert 'None' in new_hash_table
+    new_hash_table.remove('None')
+    assert 'None' not in new_hash_table
+    new_hash_table.remove('None')
+    assert 'None' not in new_hash_table
 
 
 def test_data_hash_table_contains(filled_hash_table):
@@ -54,3 +57,9 @@ def test_data_hash_table_set_negative_left(filled_hash_table):
 def test_bad_hash_contains(bad_hash_table):
     assert 'abcd' in bad_hash_table
     assert 'edba' in bad_hash_table
+
+
+def test_bad_hash_remove(bad_hash_table):
+    assert 'edba' in bad_hash_table
+    bad_hash_table.remove('edba')
+    assert 'edba' not in bad_hash_table
