@@ -2,114 +2,125 @@ from .linked_list import LinkedList
 
 
 class Node:
-    def __init__(self, key, val):
+    def __init__(self, key, value):
         """
         Initialize new Node with optional next Node.
         """
         self.key = key
-        self.val = val
+        self.value = value
 
     def __repr__(self):
         """
         Return a formatted string representing Node.
-        """
-        return f'Node({ self.key !r}, { self.val !r})'
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        return f'Node({ self.key !r}, { self.value !r})'
 
     def __str__(self):
         """
         Return a string representing Node.
-        """
-        return f'node key: ({ self.key }) val: ({ self.val })'
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        return f'node key: ({ self.key }) value: ({ self.value })'
 
 
 class HashTable:
-    def __init__(self):
+    def __init__(self, max_size=1024):
         """
-        Initialize new k tree with optional iterable.
+        Initialize new hash table with optional max size.
         """
-        self.root = None
+        self.max_size = max_size
+        self.buckets = [None] * self.max_size
         self._size = 0
 
-    def __contains__(self, val):
+    def __contains__(self, key):
         """
-        Indicate if the val is found in the k tree.
-        """
-        if not self.root:
-            return False
-        queue = LinkedList([self.root])
-        while queue:
-            current = queue.dequeue()
-            while current:
-                if current.child:
-                    queue.enqueue(current.child)
-                if current.val == val:
-                    return True
-                current = current.sibling
-        return False
+        Indicate if the value is found in the hash table.
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        bucket = self._bucket(key)
+        if isinstance(bucket, Node):
+            return bucket.key == key
+        return key in bucket
 
     def __len__(self):
         """
-        Return the number of values currently in the k tree.
+        Return the number of values currently in the hash table.
         """
         return self._size
 
     def __repr__(self):
         """
-        Return a formatted string representing k tree.
-        """
-        return f'KTree(root={ self.root !r})'
+        Return a formatted string representing hash table.
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        return f'KTree(usage={ self._size / self.max_size })'
 
     def __str__(self):
         """
-        Return a string representing k tree contents.
-        """
-        return f'k-tree root: { self.root }'
+        Return a string representing hash table contents.
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        return f'k-tree usage: { self._size / self.max_size }'
 
-    def _breadth_first(self, visitor):
+    def _bucket(self, key):
         """
-        Visit each of the nodes in breadth first order.
         """
-        if not self.root:
-            return
-        queue = LinkedList([self.root])
-        while queue:
-            current = queue.dequeue()
-            while current:
-                if current.child:
-                    queue.enqueue(current.child)
-                visitor(current)
-                current = current.sibling
+        return self.buckets[self.hash_key(key)]
 
-    def breadth_first(self, visitor):
+    def _create_bucket(self, key, value):
         """
-        Visit each of the values in breadth first order.
         """
-        self._breadth_first(lambda node: visitor(node.val))
+        self.buckets[self.hash_key(key)] = value
 
-    def insert(self, parent, val):
+    def hash_key(self, key):
         """
-        Insert a val into the k tree at all matching parents.
+        Converts a string into a index that fits the table buckets.
         """
-        if not self.root:
-            self.root = Node(val)
-            self._size += 1
+        try:
+            return sum(map(ord, key)) % len(self.buckets)
+        except TypeError:
+            pass
+        raise TypeError(
+            f'key must be a `str` object not { type(key).__name__ }')
+
+    def set(self, key, value):
+        """
+        Inserts value into buckets under the hash for key.
+        """
+        bucket = self._bucket(key)
+        node = Node(key, value)
+        if bucket is None:
+            self._create_bucket(key, node)
+        elif isinstance(bucket, Node):
+            if bucket.key == key:
+                bucket.value = value
+                return
+            self._create_bucket(key, LinkedList([node, bucket]))
+        else:  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+            bucket.insert(node)
+        self._size += 1
+
+    def get(self, key):
+        """
+        Returns the value associated with key if in table.
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        bucket = self._bucket(key)
+        if bucket is None:
+            raise KeyError
+        if isinstance(bucket, Node):
+            if bucket.key == key:
+                return bucket.value
+            raise KeyError
+        for node in bucket:
+            if node.key == key:
+                return node.value
+        raise KeyError
+
+    def remove(self, key):
+        """
+        Deletes the entry associated with a key.
+        """  # 16, 22, 39-41, 53, 59, 94-96, 103-113, 119-126
+        bucket = self._bucket(key)
+        if isinstance(bucket, Node):
+            for node in bucket:
+                if node.key == key:
+                    pass
         else:
-            def node_insert(node):
-                if node.val == parent:
-                    node.insert(val)
-                    self._size += 1
-            self._breadth_first(node_insert)
-
-    def post_order(self, visitor):
-        """
-        Visit each of the values in post order.
-        """
-        if self.root:
-            self.root.post_order(visitor)
-
-    def pre_order(self, visitor):
-        """
-        Visit each of the values in pre order.
-        """
-        if self.root:
-            self.root.pre_order(visitor)
+            self._create_bucket(key, None)
+        self._size -= 1
