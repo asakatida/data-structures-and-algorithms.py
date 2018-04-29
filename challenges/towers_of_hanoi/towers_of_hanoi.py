@@ -1,19 +1,6 @@
 from .stack import Stack
 
 
-def towers_of_hanoi_list(n, start='A', end='C', spare='B'):
-    """
-    Generate the steps of towers of hanoi.
-    """
-    move = f'Disk { n } moved from { start } to { end }'
-    if n == 1:
-        return [move]
-    result = towers_of_hanoi(n - 1, start, spare, end)
-    result.append(move)
-    result.extend(towers_of_hanoi(n - 1, spare, end, start))
-    return result
-
-
 class _Move:
     def __init__(self, disk, start='A', end='C', spare='B'):
         self.disk = disk
@@ -23,6 +10,25 @@ class _Move:
 
     def __str__(self):
         return f'Disk { self.disk } moved from { self.start } to { self.end }'
+
+    def after(self):
+        return _Move(self.disk - 1, self.start, self.spare, self.end)
+
+    def before(self):
+        return _Move(self.disk - 1, self.spare, self.end, self.start)
+
+
+def towers_of_hanoi_list(n, start='A', end='C', spare='B'):
+    """
+    Generate the steps of towers of hanoi.
+    """
+    move = str(_Move(n, start, end, spare))
+    if n == 1:
+        return [move]
+    result = towers_of_hanoi_list(n - 1, start, spare, end)
+    result.append(move)
+    result.extend(towers_of_hanoi_list(n - 1, spare, end, start))
+    return result
 
 
 def towers_of_hanoi(n):
@@ -36,10 +42,8 @@ def towers_of_hanoi(n):
             if move.disk == 1:
                 yield str(move)
             else:
-                stack.push(
-                    _Move(move.disk - 1, move.spare, move.end, move.start))
+                stack.push(move.before())
                 stack.push(str(move))
-                stack.push(
-                    _Move(move.disk - 1, move.start, move.spare, move.end))
+                stack.push(move.after())
         else:
             yield move
