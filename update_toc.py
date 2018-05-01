@@ -5,7 +5,7 @@ from pathlib import Path
 def main():
     def toc_level(contents, level=0):
         def get_key(init):
-            return tuple(Path(init).parents)[-2]
+            return Path(init).parents[1]
 
         def inner(key, group):
             return group
