@@ -21,14 +21,17 @@ Each project is also designed to support importing as a Python module.
 # Table of Contents
 1. Data Structures
     - [binary-search-tree](./data_structures/binary_search_tree)
+    - [hash-table](./data_structures/hash_table)
     - [k-tree](./data_structures/k_tree)
     - [linked-list](./data_structures/linked_list)
+    - [linked-node](./data_structures/linked_node)
     - [queue](./data_structures/queue)
     - [stack](./data_structures/stack)
 2. Algorithms
     - [binary-search](./challenges/binary_search)
     - [breadth-first-traversal](./challenges/breadth_first_traversal)
     - [fifo-animal-shelter](./challenges/fifo_animal_shelter)
+    - [find-matches](./challenges/find_matches)
     - [find-maximum-value](./challenges/find_maximum_value_binary_tree)
     - [fizz-buzz-tree](./challenges/fizzbuzztree)
     - [largest-product](./challenges/largest_product)
