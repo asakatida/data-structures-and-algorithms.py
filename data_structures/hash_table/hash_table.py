@@ -1,5 +1,6 @@
 from collections import namedtuple
 from functools import partial
+from itertools import chain
 from operator import attrgetter, eq
 
 from .linked_list import LinkedList
@@ -26,6 +27,16 @@ class HashTable:
         if isinstance(bucket, Node):
             return bucket.key == key
         return any(map(partial(eq, key), map(attrgetter('key'), bucket)))
+
+    def __iter__(self):
+        def _map_bucket(bucket):
+            if bucket is None:
+                return ()
+            if isinstance(bucket, Node):
+                return (bucket.key,)
+            return map(attrgetter('key'), bucket)
+        return chain.from_iterable(
+            map(_map_bucket, filter(None, self.buckets)))
 
     def __len__(self):
         """
