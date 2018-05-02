@@ -8,4 +8,4 @@ No standard library functions are to be used.
 
 ## Solution
 Whiteboard Images
-- [32-tree-intersection](../../assets/32-tree-intersection-jpg)
+- [32-tree-intersection](../../assets/32-tree-intersection.jpg)
