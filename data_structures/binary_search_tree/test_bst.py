@@ -1,5 +1,5 @@
 def test_empty_bst_length(new_bst):
-    assert len(new_bst) == 0
+    assert not new_bst
     assert new_bst.root is None
 
 
@@ -17,7 +17,7 @@ def test_empty_bst_insert(new_bst):
 
 
 def test_data_bst_has_length(filled_bst):
-    assert len(filled_bst) > 0
+    assert len(filled_bst) >= 1
 
 
 def test_data_bst_insert_changes_length(filled_bst):

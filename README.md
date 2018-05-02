@@ -41,3 +41,4 @@ Each project is also designed to support importing as a Python module.
     - [repeated-word](./challenges/repeated_word)
     - [shift-array](./challenges/shift_array)
     - [towers-of-hanoi](./challenges/towers_of_hanoi)
+    - [tree-intersection](./challenges/tree_intersection)
