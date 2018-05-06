@@ -1,11 +1,8 @@
 [run]
-source =
-  challenges
-  data_structures
 omit =
-  **/__init__.py
-  **/conftest.py
-  **/test_*.py
+  __init__.py
+  conftest.py
+  test_*.py
   **/site-packages/**/*.py
   **/site-packages/*.py
 

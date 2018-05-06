@@ -10,6 +10,11 @@ def test_empty_stack_pop(new_stack):
         new_stack.pop()
 
 
+def test_empty_stack_peek(new_stack):
+    with raises(IndexError):
+        new_stack.peek()
+
+
 def test_empty_stack_has_size(new_stack):
     assert len(new_stack) == 0
 
@@ -18,6 +23,13 @@ def test_data_stack_pop_changes_size(ordered_stack):
     assert len(ordered_stack) == 13
     assert ordered_stack.pop() == 39
     assert len(ordered_stack) == 12
+
+
+def test_data_stack_peek_no_mutate(ordered_stack):
+    assert len(ordered_stack) == 13
+    assert ordered_stack.peek() == 39
+    assert len(ordered_stack) == 13
+    assert ordered_stack.peek() == 39
 
 
 def test_data_stack_pop(ordered_stack):
