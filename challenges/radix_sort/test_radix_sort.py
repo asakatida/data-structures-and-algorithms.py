@@ -27,6 +27,22 @@ def test_small_radix_sort():
     assert left == right
 
 
+def test_scaling_numbers_radix_sort():
+    """
+    Test scaling numbers array with radix_sort.
+    """
+    left, right = radix_sort_test([2222, 222, 22, 2])
+    assert left == right
+
+
+def test_spread_radix_sort():
+    """
+    Test spread numbers array with radix_sort.
+    """
+    left, right = radix_sort_test([0xffff, 0xfffe, 0xfffd, 3, 2, 1])
+    assert left == right
+
+
 def test_negative_radix_sort():
     """
     Test small array with radix_sort.

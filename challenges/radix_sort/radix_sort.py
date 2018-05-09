@@ -31,7 +31,7 @@ def radix_sort(array, radix=None):
     buckets = [_array]
     max_digit = ceil(log10(max_digit)) + 1
     if not isinstance(radix, int):
-        radix = 10
+        radix = max_digit + 2
     for digit in range(max_digit):
         buckets = _radix_help(buckets, digit, radix)
     return list(_linear(buckets))
