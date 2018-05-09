@@ -35,6 +35,22 @@ def test_invert_quicksort():
     assert left == right
 
 
+def test_same_quicksort():
+    """
+    Test inverted array with quicksort.
+    """
+    left, right = quicksort_test([2, 1, 2] + [0] * 10 + [2, 1, 2])
+    assert left == right
+
+
+def test_large_quicksort():
+    """
+    Test large array with quicksort.
+    """
+    left, right = quicksort_test([i for _ in range(1000) for i in range(3)])
+    assert left == right
+
+
 def test_sorted_quicksort():
     """
     Test sorted array with quicksort.
