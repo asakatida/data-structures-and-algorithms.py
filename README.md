@@ -43,6 +43,7 @@ Each project is also designed to support importing as a Python module.
     - [print-level-order](./challenges/print_level_order)
     - [queue-with-stacks](./challenges/queue_with_stacks)
     - [quick-sort](./challenges/quicksort)
+    - [radix-sort](./challenges/radix_sort)
     - [repeated-word](./challenges/repeated_word)
     - [shift-array](./challenges/shift_array)
     - [sorting-algos](./challenges/sorting_algos)
