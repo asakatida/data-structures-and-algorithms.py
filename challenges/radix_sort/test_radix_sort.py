@@ -27,6 +27,14 @@ def test_small_radix_sort():
     assert left == right
 
 
+def test_negative_radix_sort():
+    """
+    Test small array with radix_sort.
+    """
+    left, right = radix_sort_test([-5, 3, 1, -4, 2])
+    assert left == right
+
+
 def test_shifted_digit_radix_sort():
     """
     Test shifted digit array with radix_sort.
