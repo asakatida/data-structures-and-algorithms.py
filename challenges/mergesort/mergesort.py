@@ -28,7 +28,6 @@ def mergesort(array):
                 except StopIteration:
                     yield from left
                     return
-            print(i, j)
             if i < j:
                 yield i
                 i = _static
