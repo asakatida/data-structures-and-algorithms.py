@@ -13,9 +13,11 @@ Implementations for common computer science data structures, and solutions to wh
 ## Installation
 
 Each linked project in the TOC is designed to be tested in an isolated virtual environment. This can be created as follows.
+
 * `cd <project sub directory>`
 * `python3 -m venv ENV`
 * `. ENV/bin/activate`
+
 Each project is also designed to support importing as a Python module.
 
 # Table of Contents
@@ -40,5 +42,6 @@ Each project is also designed to support importing as a Python module.
     - [queue-with-stacks](./challenges/queue_with_stacks)
     - [repeated-word](./challenges/repeated_word)
     - [shift-array](./challenges/shift_array)
+    - [sorting-algos](./challenges/sorting_algos)
     - [towers-of-hanoi](./challenges/towers_of_hanoi)
     - [tree-intersection](./challenges/tree_intersection)
