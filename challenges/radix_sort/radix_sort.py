@@ -1,37 +1,51 @@
-from math import ceil, log10, log2
+from itertools import chain
+from math import log
 
 
-def radix_sort(array, radix=None):
+class _IsSorted:
+    pass
+
+
+def _is_sorted(status):
+    status.is_sorted = True
+    status.max_digit = 0
+    last_elem = None
+    def _each(elem):
+        nonlocal status, last_elem
+        if status.is_sorted and last_elem is not None:
+            status.is_sorted = last_elem <= elem
+        abs_elem = elem
+        if status.max_digit < abs_elem:
+            status.max_digit = abs_elem
+        last_elem = elem
+        return elem
+    return _each
+
+
+def _radix_help(a_buckets, b_buckets, digit, radix):
+    for bucket in b_buckets:
+        bucket.clear()
+    for i in chain.from_iterable(a_buckets):
+        bucket = (i // (radix ** digit)) % radix
+        if i >= 0:
+            bucket += radix
+        b_buckets[bucket].append(i)
+    return b_buckets, a_buckets
+
+
+def radix_sort(array):
     """
     Sort an array using a radix sort.
     """
-    def _linear(buckets):
-        for bucket in buckets:
-            yield from bucket
-    def _radix_help(buckets, digit, radix):
-        new = [[] for _ in range(radix * 2)]
-        for i in _linear(buckets):
-            bucket = (i // (radix ** digit)) % radix
-            if i >= 0:
-                bucket += radix
-            new[bucket].append(i)
-        return new
-
-    _array = []
-    is_sorted = True
-    max_digit = 0
-    for i in array:
-        if is_sorted and _array:
-            is_sorted = _array[-1] <= i
-        if max_digit < abs(i):
-            max_digit = abs(i)
-        _array.append(i)
-    if is_sorted:
-        return _array
-    buckets = [_array]
-    max_digit = ceil(log10(max_digit)) + 1
-    if not isinstance(radix, int):
-        radix = max_digit + 2
-    for digit in range(max_digit):
-        buckets = _radix_help(buckets, digit, radix)
-    return list(_linear(buckets))
+    status = _IsSorted()
+    array = list(map(_is_sorted(status), array))
+    if status.is_sorted:
+        return array
+    digit_count = status.max_digit.bit_length()
+    radix = 1 << (digit_count // 10) + 1
+    a_buckets, b_buckets = (
+        [[] for _ in range(radix * 2)], [[] for _ in range(radix * 2)])
+    a_buckets[0] = array
+    for digit in range(11):
+        a_buckets, b_buckets = _radix_help(a_buckets, b_buckets, digit, radix)
+    return list(chain.from_iterable(a_buckets))
