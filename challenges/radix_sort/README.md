@@ -1,4 +1,4 @@
-# Merge Sort
+# Radix Sort
 Sort an array using a radix sort.
 
 ## Challenge
