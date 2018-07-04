@@ -1,4 +1,4 @@
-from .node import Node
+from ..linked_node.node import Node
 
 
 class Queue:

@@ -1,4 +1,4 @@
-from .bst import BST
+from data_structures.binary_search_tree.bst import BST
 from pytest import fixture
 
 

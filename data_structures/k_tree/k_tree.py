@@ -1,4 +1,4 @@
-from .abstract_tree import AbstractBaseTree
+from ..abstract_tree.abstract_tree import AbstractBaseTree
 
 
 class KTree(AbstractBaseTree):

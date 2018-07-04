@@ -1,4 +1,4 @@
-from .queue import Queue
+from ..queue.queue import Queue
 
 
 class EmptyOptional(Exception):

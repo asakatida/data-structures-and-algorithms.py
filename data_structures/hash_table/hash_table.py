@@ -3,7 +3,7 @@ from functools import partial
 from itertools import chain
 from operator import attrgetter, eq
 
-from .linked_list import LinkedList
+from ..linked_list.linked_list import LinkedList
 
 Node = namedtuple("Node", ["key", "value"])
 

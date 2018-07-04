@@ -1,4 +1,4 @@
-from .hash_table import HashTable
+from data_structures.hash_table.hash_table import HashTable
 
 
 def tree_intersection(left, right):

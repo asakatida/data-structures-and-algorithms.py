@@ -1,4 +1,4 @@
-from .queue import Queue
+from data_structures.queue.queue import Queue
 
 
 class Animal:
