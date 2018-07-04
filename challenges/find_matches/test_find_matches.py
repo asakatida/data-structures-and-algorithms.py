@@ -2,7 +2,7 @@ from .find_matches import find_matches
 
 
 def extract_values(_in):
-    return [node.val for node in _in]
+    return [node.value for node in _in]
 
 
 def test_empty_k_tree_find_matches(new_k_tree):

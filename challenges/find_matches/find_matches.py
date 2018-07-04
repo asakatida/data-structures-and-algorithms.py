@@ -6,9 +6,9 @@ def find_matches(tree, value):
     def recurse(node, search):
         if not node:
             return
-        if node.val == search:
+        if node.value == search:
             yield node
         yield from recurse(node.child, search)
         yield from recurse(node.sibling, search)
 
-    return list(recurse(tree.root, value))
+    return list(recurse(tree, value))

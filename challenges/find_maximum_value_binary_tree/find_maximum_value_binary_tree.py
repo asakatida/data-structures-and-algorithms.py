@@ -4,9 +4,9 @@ def find_maximum_value(tree):
     """
     maximum = None
 
-    def op(val):
+    def op(value):
         nonlocal maximum
-        maximum = val if maximum is None or val > maximum else maximum
+        maximum = value if maximum is None or value > maximum else maximum
 
     tree.post_order(op)
 

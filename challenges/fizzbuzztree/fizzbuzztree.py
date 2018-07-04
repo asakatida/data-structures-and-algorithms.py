@@ -3,8 +3,11 @@ def fizzbuzztree(tree):
     Transform the node values of the tree to fizzbuzz results.
     """
 
+    if not tree:
+        return tree
+
     def _walk(node):
-        if not node:
+        if node is None:
             return
         _walk(node.right)
         _walk(node.left)
@@ -18,5 +21,5 @@ def fizzbuzztree(tree):
         else:
             node.value = str(node.value)
 
-    _walk(tree.root)
+    _walk(tree)
     return tree
