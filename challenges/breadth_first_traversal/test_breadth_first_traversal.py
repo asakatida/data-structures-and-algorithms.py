@@ -19,5 +19,5 @@ def test_right_bst_breadth_first(right_bst):
 
 def test_right_bst_breadth_first_ordering(right_bst):
     lst = []
-    right_bst.breadth_first_traversal(lst.append)
+    right_bst.breadth_first(lst.append)
     assert lst == list(range(-9, 9, 3))
