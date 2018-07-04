@@ -57,7 +57,7 @@ def test_enqueue_not_animal_raises(new_queue):
     with raises(TypeError):
         new_queue.enqueue(None)
     with raises(TypeError):
-        new_queue.enqueue('None')
+        new_queue.enqueue("None")
     with raises(TypeError):
         new_queue.enqueue(3.14)
 

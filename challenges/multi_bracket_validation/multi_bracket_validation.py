@@ -1,4 +1,4 @@
-_MAP = dict(zip('[({', '])}'))
+_MAP = dict(zip("[({", "])}"))
 
 
 def multi_bracket_validation(input):
@@ -15,6 +15,7 @@ def multi_bracket_validation(input):
     - `}}`
     - `][`
     """
+
     def _recurse(it, opener=None):
         for c in it:
             if c in _MAP.keys():

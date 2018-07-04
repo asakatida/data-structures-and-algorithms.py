@@ -51,5 +51,5 @@ def test_empty_queue_enqueue_multiple(new_queue):
 
 def test_empty_queue_enqueue_changes_size(new_queue):
     assert len(new_queue) == 0
-    new_queue.enqueue('test')
+    new_queue.enqueue("test")
     assert len(new_queue) == 1

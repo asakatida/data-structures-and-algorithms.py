@@ -43,21 +43,22 @@ class BST:
             Return a formatted string representing Node.
             """
             return (
-                f'BST._Node({ self.value !r}, '
-                f'left={ self.left !r}, '
-                f'right={ self.right !r})')
+                f"BST._Node({ self.value !r}, "
+                f"left={ self.left !r}, "
+                f"right={ self.right !r})"
+            )
 
         def __str__(self):
             """
             Return a string representing Node.
             """
-            return f'''({
+            return f"""({
                 self.value
             }, left={
                 "<NONE>"if self.left is None else "..."
             }, right={
                 "<NONE>"if self.right is None else "..."
-            })'''
+            })"""
 
     def __init__(self, it=()):
         """
@@ -108,7 +109,7 @@ class BST:
         """
         Return a string representing binary search tree contents.
         """
-        return f'binary search tree root: { self.root }'
+        return f"binary search tree root: { self.root }"
 
     def breadth_first_traversal(self, visitor):
         """

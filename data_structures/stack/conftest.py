@@ -19,4 +19,4 @@ def unordered_stack():
 
 @fixture
 def large_stack():
-    return Stack('task' for _ in range(0xFFFFFF))
+    return Stack("task" for _ in range(0xFFFFFF))

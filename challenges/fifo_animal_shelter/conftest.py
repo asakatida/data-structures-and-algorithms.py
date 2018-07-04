@@ -9,14 +9,14 @@ def new_queue():
 
 @fixture
 def ordered_queue():
-    return AnimalShelter(
-        Dog() if i < 10 else Cat() for i in range(3, 40, 3))
+    return AnimalShelter(Dog() if i < 10 else Cat() for i in range(3, 40, 3))
 
 
 @fixture
 def unordered_queue():
     return AnimalShelter(
-        Dog() if i % 7 < 3 else Cat() for i in range(73, 40, -2))
+        Dog() if i % 7 < 3 else Cat() for i in range(73, 40, -2)
+    )
 
 
 @fixture

@@ -5,7 +5,7 @@ from operator import attrgetter, eq
 
 from .linked_list import LinkedList
 
-Node = namedtuple('Node', ['key', 'value'])
+Node = namedtuple("Node", ["key", "value"])
 
 
 class HashTable:
@@ -26,7 +26,7 @@ class HashTable:
             return False
         if isinstance(bucket, Node):
             return bucket.key == key
-        return any(map(partial(eq, key), map(attrgetter('key'), bucket)))
+        return any(map(partial(eq, key), map(attrgetter("key"), bucket)))
 
     def __iter__(self):
         def _map_bucket(bucket):
@@ -34,9 +34,11 @@ class HashTable:
                 return ()
             if isinstance(bucket, Node):
                 return (bucket.key,)
-            return map(attrgetter('key'), bucket)
+            return map(attrgetter("key"), bucket)
+
         return chain.from_iterable(
-            map(_map_bucket, filter(None, self.buckets)))
+            map(_map_bucket, filter(None, self.buckets))
+        )
 
     def __len__(self):
         """
@@ -48,13 +50,13 @@ class HashTable:
         """
         Return a formatted string representing hash table.
         """
-        return f'KTree(usage={ self._size / self.max_size })'
+        return f"KTree(usage={ self._size / self.max_size })"
 
     def __str__(self):
         """
         Return a string representing hash table contents.
         """
-        return f'k-tree usage: { self._size / self.max_size }'
+        return f"k-tree usage: { self._size / self.max_size }"
 
     def _bucket(self, key):
         """
@@ -77,7 +79,8 @@ class HashTable:
         except TypeError:
             pass
         raise TypeError(
-            f'key must be a `str` object not { type(key).__name__ }')
+            f"key must be a `str` object not { type(key).__name__ }"
+        )
 
     def set(self, key, value):
         """

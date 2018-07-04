@@ -67,5 +67,5 @@ def test_empty_stack_push_multiple(new_stack):
 
 def test_empty_stack_push_changes_size(new_stack):
     assert len(new_stack) == 0
-    new_stack.push('test')
+    new_stack.push("test")
     assert len(new_stack) == 1

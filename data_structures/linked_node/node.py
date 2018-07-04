@@ -11,10 +11,10 @@ class Node:
         Return a formatted string representing Node.
         """
         if self._has_loop():
-            return f'Node({ self.value !r}, ...)'
+            return f"Node({ self.value !r}, ...)"
         if self._next is None:
-            return f'Node({ self.value !r})'
-        return f'Node({ self.value !r}, { self._next !r})'
+            return f"Node({ self.value !r})"
+        return f"Node({ self.value !r}, { self._next !r})"
 
     def _has_loop(self):
         """
@@ -38,8 +38,8 @@ class Node:
         """
         Return a string representing Node.
         """
-        return f'''({
+        return f"""({
             self.value
         }, {
             "<END>"if self._next is None else "..."
-        })'''
+        })"""

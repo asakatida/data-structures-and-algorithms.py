@@ -56,7 +56,8 @@ def test_sorted_quicksort():
     Test sorted array with quicksort.
     """
     left, right = quicksort_test(
-        [i for j in range(100) for i in range(j, j + 2)])
+        [i for j in range(100) for i in range(j, j + 2)]
+    )
     assert left == right
 
 

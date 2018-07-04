@@ -8,10 +8,10 @@ def abcd_table1():
     """
     """
     hash_table = HashTable()
-    hash_table.set('a', object())
-    hash_table.set('b', object())
-    hash_table.set('c', object())
-    hash_table.set('d', object())
+    hash_table.set("a", object())
+    hash_table.set("b", object())
+    hash_table.set("c", object())
+    hash_table.set("d", object())
     return hash_table
 
 
@@ -20,10 +20,10 @@ def abcd_table2():
     """
     """
     hash_table = HashTable()
-    hash_table.set('a', object())
-    hash_table.set('b', object())
-    hash_table.set('c', object())
-    hash_table.set('d', object())
+    hash_table.set("a", object())
+    hash_table.set("b", object())
+    hash_table.set("c", object())
+    hash_table.set("d", object())
     return hash_table
 
 
@@ -32,10 +32,10 @@ def efgh_table():
     """
     """
     hash_table = HashTable()
-    hash_table.set('e', object())
-    hash_table.set('f', object())
-    hash_table.set('g', object())
-    hash_table.set('h', object())
+    hash_table.set("e", object())
+    hash_table.set("f", object())
+    hash_table.set("g", object())
+    hash_table.set("h", object())
     return hash_table
 
 
@@ -44,10 +44,10 @@ def aceg_table():
     """
     """
     hash_table = HashTable()
-    hash_table.set('a', object())
-    hash_table.set('c', object())
-    hash_table.set('e', object())
-    hash_table.set('g', object())
+    hash_table.set("a", object())
+    hash_table.set("c", object())
+    hash_table.set("e", object())
+    hash_table.set("g", object())
     return hash_table
 
 

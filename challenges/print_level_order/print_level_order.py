@@ -5,9 +5,9 @@ def print_level_order(tree):
     """
     Output string with a line per level of the tree.
     """
-    if not tree.root:
-        return ''
-    queue = Queue([tree.root])
+    if not tree:
+        return ""
+    queue = Queue([tree])
     next_queue = Queue()
     output = [[]]
     while queue or next_queue:
@@ -21,4 +21,4 @@ def print_level_order(tree):
         while child:
             next_queue.enqueue(child)
             child = child.sibling
-    return '\n'.join(map(' '.join, output))
+    return "\n".join(map(" ".join, output))

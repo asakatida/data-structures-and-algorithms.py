@@ -20,9 +20,9 @@ def test_towers_of_hanoi_4():
 
 
 def test_towers_of_hanoi_7_solution():
-    towers = {'A': Stack(range(7, 0, -1)), 'B': Stack(), 'C': Stack()}
+    towers = {"A": Stack(range(7, 0, -1)), "B": Stack(), "C": Stack()}
     for move in towers_of_hanoi(7):
-        move = match(r'Disk (\d+) moved from (\w+) to (\w+)', move)
+        move = match(r"Disk (\d+) moved from (\w+) to (\w+)", move)
         disk = int(move.group(1))
         start = move.group(2)
         end = move.group(3)
@@ -30,18 +30,18 @@ def test_towers_of_hanoi_7_solution():
         if towers[end]:
             assert towers[end].peek() > disk
         towers[end].push(disk)
-    assert len(towers['A']) == 0
-    assert len(towers['B']) == 0
-    end = towers['C']
+    assert len(towers["A"]) == 0
+    assert len(towers["B"]) == 0
+    end = towers["C"]
     assert len(end) == 7
     for i in range(1, 8):
         assert end.pop() == i
 
 
 def test_towers_of_hanoi_list_7_solution():
-    towers = {'A': Stack(range(7, 0, -1)), 'B': Stack(), 'C': Stack()}
+    towers = {"A": Stack(range(7, 0, -1)), "B": Stack(), "C": Stack()}
     for move in towers_of_hanoi_list(7):
-        move = match(r'Disk (\d+) moved from (\w+) to (\w+)', move)
+        move = match(r"Disk (\d+) moved from (\w+) to (\w+)", move)
         disk = int(move.group(1))
         start = move.group(2)
         end = move.group(3)
@@ -49,9 +49,9 @@ def test_towers_of_hanoi_list_7_solution():
         if towers[end]:
             assert towers[end].peek() > disk
         towers[end].push(disk)
-    assert len(towers['A']) == 0
-    assert len(towers['B']) == 0
-    end = towers['C']
+    assert len(towers["A"]) == 0
+    assert len(towers["B"]) == 0
+    end = towers["C"]
     assert len(end) == 7
     for i in range(1, 8):
         assert end.pop() == i
