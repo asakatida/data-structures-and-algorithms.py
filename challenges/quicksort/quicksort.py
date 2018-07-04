@@ -2,8 +2,10 @@ def quicksort(array):
     """
     Sort an array using a recursive quicksort.
     """
+
     def _swap(array, left, right):
         array[right], array[left] = array[left], array[right]
+
     def _quick_help(array, start, end):
         if start >= end:
             return array
@@ -12,8 +14,9 @@ def quicksort(array):
         left = start
         while left < pivot or pivot < right:
             if (
-                    left < pivot < right and
-                    array[right] < array[pivot] < array[left]):
+                left < pivot < right
+                and array[right] < array[pivot] < array[left]
+            ):
                 _swap(array, left, right)
                 left += 1
                 right -= 1
@@ -36,10 +39,8 @@ def quicksort(array):
                 else:
                     right -= 1
         return _quick_help(
-            _quick_help(
-                array,
-                start, pivot - 1),
-            pivot + 1, end)
+            _quick_help(array, start, pivot - 1), pivot + 1, end
+        )
 
     array = list(array)
     return _quick_help(array, 0, len(array) - 1)

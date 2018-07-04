@@ -8,7 +8,7 @@ def repeated_word(string):
     Output first repeated word.
     """
     hash_table = HashTable()
-    for word in finditer(r'\w+', string.lower()):
+    for word in finditer(r"\w+", string.lower()):
         word = word.group()
         if word in hash_table:
             return word

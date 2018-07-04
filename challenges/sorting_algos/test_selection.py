@@ -30,7 +30,8 @@ def test_large_mergesort():
 
 def test_sorted_mergesort():
     left, right = selection_test(
-        [i for j in range(100) for i in range(j, j + 2)])
+        [i for j in range(100) for i in range(j, j + 2)]
+    )
     assert left == right
 
 

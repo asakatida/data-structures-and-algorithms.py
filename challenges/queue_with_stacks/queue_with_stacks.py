@@ -20,16 +20,16 @@ class Queue:
         Return a formatted string representing queue.
         """
         if self:
-            return f'Queue({ self.left !r}, { self.right !r})'
-        return 'Queue()'
+            return f"Queue({ self.left !r}, { self.right !r})"
+        return "Queue()"
 
     def __str__(self):
         """
         Return a string representing queue.
         """
         if self:
-            return f'Queue output: { self.right }, size: { len(self) }'
-        return 'Empty queue'
+            return f"Queue output: { self.right }, size: { len(self) }"
+        return "Empty queue"
 
     def dequeue(self):
         """

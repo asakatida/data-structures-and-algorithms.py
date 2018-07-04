@@ -19,4 +19,4 @@ def unordered_queue():
 
 @fixture
 def large_queue():
-    return Queue('task' for _ in range(0xFFFFFF))
+    return Queue("task" for _ in range(0xFFFFFF))

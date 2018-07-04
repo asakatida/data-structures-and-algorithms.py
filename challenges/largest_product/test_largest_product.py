@@ -14,9 +14,9 @@ def test_largest_product_early_answer():
 
 
 def test_largest_product_square_matrix():
-    assert largest_product(
-        [
-            (1, 3, 1, 4),
-            (2, 4, 1, 3),
-            (3, 1, 4, 2),
-            (4, 2, 1, 1)]) == 12
+    assert (
+        largest_product(
+            [(1, 3, 1, 4), (2, 4, 1, 3), (3, 1, 4, 2), (4, 2, 1, 1)]
+        )
+        == 12
+    )

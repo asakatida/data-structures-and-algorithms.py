@@ -96,7 +96,8 @@ def test_sorted_radix_sort():
     Test sorted array with radix_sort.
     """
     left, right = radix_sort_test(
-        [i for j in range(100) for i in range(j, j + 2)])
+        [i for j in range(100) for i in range(j, j + 2)]
+    )
     assert left == right
 
 

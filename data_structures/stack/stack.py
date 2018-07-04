@@ -17,16 +17,16 @@ class Stack:
         Return a formatted string representing Stack.
         """
         if self.head:
-            return f'Stack({ self.head.value !r}, ...)'
-        return f'Stack()'
+            return f"Stack({ self.head.value !r}, ...)"
+        return f"Stack()"
 
     def __str__(self):
         """
         Return a string representing Stack.
         """
         if self.head:
-            return f'Stack head: { self.head.value }, size: { self._size }'
-        return f'Empty stack'
+            return f"Stack head: { self.head.value }, size: { self._size }"
+        return f"Empty stack"
 
     def __len__(self):
         """
@@ -39,7 +39,7 @@ class Stack:
         Retrieve the most recent item on the stack.
         """
         if not self.head:
-            raise IndexError('')
+            raise IndexError("")
         return self.head.value
 
     def pop(self):
@@ -47,7 +47,7 @@ class Stack:
         Retrieve and remove the most recent item from the stack.
         """
         if not self.head:
-            raise IndexError('')
+            raise IndexError("")
         node = self.head
         self.head = self.head._next
         self._size -= 1

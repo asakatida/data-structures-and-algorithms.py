@@ -9,18 +9,18 @@ def test_chained_node(chained_node):
 
 
 def test_node_repr(new_node):
-    assert repr(new_node) == 'Node(None)'
+    assert repr(new_node) == "Node(None)"
 
 
 def test_node_str(new_node):
-    assert str(new_node) == '(None, <END>)'
+    assert str(new_node) == "(None, <END>)"
 
 
 def test_node_repr_chain(chained_node):
-    assert repr(chained_node) == 'Node(1, Node(2, Node(3)))'
-    assert repr(chained_node._next) == 'Node(2, Node(3))'
+    assert repr(chained_node) == "Node(1, Node(2, Node(3)))"
+    assert repr(chained_node._next) == "Node(2, Node(3))"
 
 
 def test_node_str_chain(chained_node):
-    assert str(chained_node) == '(1, ...)'
-    assert str(chained_node._next) == '(2, ...)'
+    assert str(chained_node) == "(1, ...)"
+    assert str(chained_node._next) == "(2, ...)"

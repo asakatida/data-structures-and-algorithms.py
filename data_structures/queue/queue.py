@@ -17,16 +17,16 @@ class Queue:
         Return a formatted string representing Queue.
         """
         if self.head:
-            return f'Queue(..., { self.head.value !r})'
-        return f'Queue()'
+            return f"Queue(..., { self.head.value !r})"
+        return f"Queue()"
 
     def __str__(self):
         """
         Return a string representing Queue.
         """
         if self.head:
-            return f'Queue head: { self.head.value }, size: { self._size }'
-        return f'Empty queue'
+            return f"Queue head: { self.head.value }, size: { self._size }"
+        return f"Empty queue"
 
     def __len__(self):
         """
@@ -39,7 +39,7 @@ class Queue:
         Retrieve and remove the earliest item from the queue.
         """
         if not self.head:
-            raise IndexError('')
+            raise IndexError("")
         node = self.head
         if not node._next:
             self.head = None

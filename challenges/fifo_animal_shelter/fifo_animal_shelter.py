@@ -33,23 +33,23 @@ class AnimalShelter:
         Return a formatted string representing queue.
         """
         if self:
-            return f'Queue({ self.main_queue !r}, { self.spare_queue !r})'
-        return 'Queue()'
+            return f"Queue({ self.main_queue !r}, { self.spare_queue !r})"
+        return "Queue()"
 
     def __str__(self):
         """
         Return a string representing queue.
         """
         if self:
-            return f'Queue output: { self.main_queue }, size: { len(self) }'
-        return 'Empty queue'
+            return f"Queue output: { self.main_queue }, size: { len(self) }"
+        return "Empty queue"
 
     def enqueue(self, animal):
         """
         Insert a animal into the queue.
         """
         if not isinstance(animal, (Cat, Dog)):
-            raise TypeError('animal must be a cat or dog')
+            raise TypeError("animal must be a cat or dog")
         self.main_queue.enqueue(animal)
 
     def dequeue(self, prefer=None):
@@ -61,7 +61,7 @@ class AnimalShelter:
                 return self.spare_queue.dequeue()
             return self.main_queue.dequeue()
         if not issubclass(prefer, Animal):
-            raise ValueError('shelter only provides cats and dogs')
+            raise ValueError("shelter only provides cats and dogs")
         if prefer == self.spare_type:
             return self.spare_queue.dequeue()
         while True:

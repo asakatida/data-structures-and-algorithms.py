@@ -7,7 +7,7 @@ def extract_values(_in):
 
 def test_empty_k_tree_find_matches(new_k_tree):
     assert find_matches(new_k_tree, 1) == []
-    assert find_matches(new_k_tree, '1') == []
+    assert find_matches(new_k_tree, "1") == []
     assert find_matches(new_k_tree, None) == []
 
 
@@ -22,6 +22,14 @@ def test_list_k_tree_find_matches(linked_list_k_tree):
 
 
 def test_single_k_tree_find_matches(non_unique_k_tree):
-    assert extract_values(
-        find_matches(non_unique_k_tree, 2)) == [2, 2, 2, 2, 2, 2, 2, 2]
+    assert extract_values(find_matches(non_unique_k_tree, 2)) == [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+    ]
     assert extract_values(find_matches(non_unique_k_tree, 3)) == []
