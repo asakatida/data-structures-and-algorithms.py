@@ -1,6 +1,5 @@
 def test_empty_k_tree_length(new_k_tree):
     assert len(new_k_tree) == 0
-    assert new_k_tree.root is None
 
 
 def test_empty_k_tree_contains(new_k_tree):
@@ -18,8 +17,16 @@ def test_data_k_tree_contains(filled_k_tree):
 
 def test_empty_k_tree_insert(new_k_tree):
     new_k_tree.insert(None, 1)
-    assert new_k_tree.root is not None
     assert 1 in new_k_tree
+
+
+def test_empty_k_tree_insert_many(new_k_tree):
+    new_k_tree.insert(None, 1)
+    new_k_tree.insert(1, 2)
+    new_k_tree.insert(1, 3)
+    assert 2 in new_k_tree
+    assert 3 in new_k_tree
+    assert 4 not in new_k_tree
 
 
 def test_data_k_tree_has_length(filled_k_tree):

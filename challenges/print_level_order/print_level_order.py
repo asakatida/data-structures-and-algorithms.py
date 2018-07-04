@@ -16,7 +16,7 @@ def print_level_order(tree):
             output.append([])
             continue
         node = queue.dequeue()
-        output[-1].append(str(node.val))
+        output[-1].append(str(node.value))
         child = node.child
         while child:
             next_queue.enqueue(child)

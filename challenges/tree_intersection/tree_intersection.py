@@ -22,8 +22,8 @@ def tree_intersection(left, right):
         return right_set
 
     # build tree sets
-    left_values = _recurse(left.root)
-    right_values = _recurse(right.root)
+    left_values = _recurse(left) if left else HashTable()
+    right_values = _recurse(right) if right else HashTable()
 
     # get intersection of values
     for value in left_values:
