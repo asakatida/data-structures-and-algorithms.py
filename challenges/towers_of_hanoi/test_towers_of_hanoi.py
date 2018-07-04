@@ -1,5 +1,5 @@
 from .towers_of_hanoi import towers_of_hanoi, towers_of_hanoi_list
-from .stack import Stack
+from data_structures.stack.stack import Stack
 from re import match
 
 

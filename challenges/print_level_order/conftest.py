@@ -1,4 +1,4 @@
-from .k_tree import KTree
+from data_structures.k_tree.k_tree import KTree
 from pytest import fixture
 
 

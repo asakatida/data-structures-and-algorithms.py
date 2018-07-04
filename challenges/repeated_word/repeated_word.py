@@ -1,6 +1,6 @@
 from re import finditer
 
-from .hash_table import HashTable
+from data_structures.hash_table.hash_table import HashTable
 
 
 def repeated_word(string):

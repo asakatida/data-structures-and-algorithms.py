@@ -1,4 +1,4 @@
-from .queue import Queue
+from data_structures.queue.queue import Queue
 
 
 def print_level_order(tree):
