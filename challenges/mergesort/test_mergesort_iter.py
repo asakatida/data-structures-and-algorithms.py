@@ -1,4 +1,4 @@
-from random import shuffle
+# from random import shuffle
 
 from .mergesort_iter import mergesort
 
@@ -18,9 +18,9 @@ def test_small_mergesort():
     assert left == right
 
 
-def test_invert_mergesort():
-    left, right = mergesort_test(list(range(10, 0, -1)))
-    assert left == right
+# def test_invert_mergesort():
+#     left, right = mergesort_test(list(range(10, 0, -1)))
+#     assert left == right
 
 
 # def test_large_mergesort():
@@ -28,10 +28,10 @@ def test_invert_mergesort():
 #     assert left == right
 
 
-def test_sorted_mergesort():
-    left, right = mergesort_test(
-        [i for j in range(100) for i in range(j, j + 2)])
-    assert left == right
+# def test_sorted_mergesort():
+#     left, right = mergesort_test(
+#         [i for j in range(100) for i in range(j, j + 2)])
+#     assert left == right
 
 
 # def test_random_mergesort():
